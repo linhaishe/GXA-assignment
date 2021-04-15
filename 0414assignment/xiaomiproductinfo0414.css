@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.con {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.banner {
+  width: 465px;
+  height: 374px;
+  float: left;
+  margin-right: 50px;
+}
+
+.main {
+  float: left;
+  margin-right: 10px;
+}
+
+.main img {
+  width: 370px;
+  height: 370px;
+}
+
+.thumb img {
+  width: 85px;
+  height: 85px;
+}
+
+.thumb-container {
+  margin-bottom: 5px;
+}
+
+.sku-container {
+  /* margin-left: 50px; */
+}
+
+.name {
+  font-size: 26px;
+}
+
+.summary {
+  color: #999999;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.promotion {
+  color: #999999;
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+.promotion a {
+  text-decoration: none;
+  color: #d55556;
+}
+
+.card {
+  width: 550px;
+  height: 110px;
+  /* border: 1px solid red; */
+  /* z-index: 1; */
+  margin-left: 500px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  padding: 15px;
+}
+
+.card h5,
+.size-line h5,
+.count-line h5 {
+  float: left;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.saleprice {
+  color: #c00201;
+  font-size: 10px;
+}
+
+.originalprice {
+  color: #c00201;
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+.delprice {
+  color: lightgray;
+  margin-right: 20px;
+}
+
+.promotion-logo {
+  background-color: #c00201;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.service img {
+  width: 17px;
+  height: 17px;
+  vertical-align: top;
+  margin-right: 5px;
+  margin-top: 3px;
+  /* float: left; */
+}
+
+.service span {
+  margin-right: 5px;
+}
+
+.service-item {
+  float: left;
+  margin-top: 10px;
+}
+.addreess {
+  margin-top: 20px;
+  font-size: 12px;
+  /* color: #f9f9f9; */
+}
+
+.addreess span {
+  margin-right: 10px;
+}
+
+.addreess a {
+  text-decoration: none;
+  color: #999999;
+}
+
+.size-line {
+  /* border: 1px solid red; */
+  /* height: 50px; */
+  /* text-align: center; */
+  margin-top: 10px;
+  height: 45px;
+}
+
+.size-container button {
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 16px;
+  /* font-weight: 100px; */
+  cursor: pointer;
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.count-line img {
+  width: 123px;
+  height: 28px;
+}
+.service div:last-child {
+  /* border: 1px solid red; */
+  margin-left: 47px;
+}
+
+.service div:last-child a {
+  text-decoration: none;
+  color: #bda788;
+}
+
+.count-line,
+.size-line {
+  /* border: 1px solid red; */
+}
+
+.count-line img {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.btn-line {
+  /* border: 1px solid red; */
+  margin-left: 500px;
+  margin-top: 20px;
+
+  height: 50px;
+}
+
+.buy-btn-container button {
+  float: left;
+}
+
+.buy-btn-container button {
+  background-color: #ffffff;
+  border: 1px solid #d1bfa6;
+  color: black;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 16px;
+  /* font-weight: 100px; */
+  cursor: pointer;
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.buy-btn-container .putin-cart button {
+  color: white;
+  background-color: #d1bfa6;
+}
+
+.buy-btn-container .buy button {
+  color: #d1bfa6;
+}
+
+.favo-btn img,
+.service-btn img {
+  width: 10px;
+  height: 10px;
+}
+
+.favo-btn span,
+.service-btn span {
+  display: block;
+}
+
+.favo-btn {
+  float: left;
+  margin-right: 20px;
+}
+
+.favo-btn button,
+.service-btn button {
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+  color: lightgray;
+  padding: 5px 5px;
+  text-align: center;
+  font-size: 12px;
+  /* font-weight: 100px; */
+  cursor: pointer;
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  /* margin-right: 5px; */
+}

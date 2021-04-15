@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* body {
+  width: 1200px;
+} */
+.con {
+  width: 1200px;
+  margin: 0 auto;
+  /* border: 1px solid blue; */
+}
+
+nav {
+  background-color: #333333;
+  height: 40px;
+  margin-bottom: 40px;
+  /* border: 1px solid blue; */
+}
+/* 当我们对多个li使用右浮动时，第一个li排在一行中的最后一个。这就导致了li的顺序颠倒，为了方便代码的美观，不推荐对li进行颠倒书写方式。而是采用这样一种方法:先对ul采取一个右浮动，然后再对li采取一个左浮动就能完美的解决li顺序颠倒的情况。 */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid blue; */
+  height: 40px;
+  float: right;
+}
+
+nav li {
+  /*border:1px solid red; */
+  border-right: 1px solid #f0f0f0;
+  display: block;
+  /*height:20px;
+  line-height:20px; */
+  margin-right: 10px;
+  margin-top: 10px;
+  /*   padding:10px; */
+  padding: 0 10px 0 10px;
+  float: left;
+}
+
+nav a,
+section a,
+content .more a {
+  text-decoration: none;
+  color: #f0f0f0;
+  font-size: 13px;
+  /* border:1px solid red; */
+}
+
+section a {
+  color: #333333;
+}
+
+nav li:first-child,
+nav li:last-child {
+  border-right: 1px solid #333333;
+}
+
+nav img {
+  vertical-align: middle;
+}
+.img1 {
+  margin-right: 15px;
+}
+
+.img2 {
+  margin-left: 20px;
+}
+
+.logo-nav {
+  /* border: 1px solid #333333; */
+  margin-top: 40px;
+  /* height: 60px; */
+}
+
+section .img3,
+section .logo {
+  float: left;
+}
+
+section .logo {
+  margin-top: 10px;
+}
+
+section ul {
+  /* border: 1px solid red; */
+  /* height: 20px; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+section li {
+  /* border: 1px solid blue; */
+
+  /* border-right: 1px solid #f0f0f0; */
+  display: block;
+  padding: 0 10px 0 10px;
+  float: left;
+  margin-left: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+section li:first-child {
+  margin-left: 148px;
+}
+
+section li:last-child {
+  margin-right: 400px;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid grey;
+  width: 250px;
+  padding-bottom: 5px;
+  padding-left: 50px;
+}
+
+section .img3 {
+  margin-top: 10px;
+  margin-right: -40px;
+}
+
+section .img4 {
+  margin-top: 5px;
+}
+.title {
+  display: inline-block;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  /* border: 1px solid red; */
+}
+
+.title .span-h1 {
+  font-size: 30px;
+}
+
+.title .span-p {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+
+.title .more,
+.title .more a {
+  font-size: 16px;
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.more {
+  /* float: right; */
+  margin-left: 900px;
+}
+
+.pro {
+  width: 290px;
+  height: 400px;
+  /* border: 1px solid red; */
+  text-align: center;
+}
+
+.pro img {
+  width: 290px;
+  height: 290px;
+}
+
+.pro p,
+.pro h3 {
+  line-height: 30px;
+}
+
+.pro .des {
+  color: #919191;
+}
+
+.dollar {
+  color: #a92213;
+  font-size: 16px;
+}
+.price {
+  color: #a92213;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.products .pro {
+  /* display: block; */
+  float: left;
+  margin-right: 5px;
+}
+
+.products .pro div:last-child {
+  margin-right: 0;
+}
+
+.contentbox {
+  background-color: #b3b3b3;
+  margin-top: 10px;
+}
+
+/* .pro {
+  border: 1px solid red;
+} */
+
+.pro2 {
+  height: 290px;
+}
+
+.pro2 img {
+  width: 195px;
+  height: 195px;
+}
+
+.pro2 h4 {
+  color: #886445;
+}
+
+.contentbox {
+  padding: 15px;
+  background-color: #f8f8f8;
+  height: 80px;
+  /* border: 1px solid red; */
+}

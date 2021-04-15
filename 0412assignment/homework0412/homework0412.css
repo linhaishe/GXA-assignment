@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 1200px;
+  background-color: black;
+  color: white;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.text1 {
+  font-family: Microsoft YaHei;
+  font-size: 16px;
+  float: left;
+  width: 900px;
+  /* clear: left; */
+  text-align: justify;
+}
+.text1:first-letter {
+  font-size: 50px;
+  float: left;
+}
+
+#planet1 {
+  width: 300px;
+  height: 300px;
+  float: right;
+}
+
+#planet2 {
+  width: 300px;
+  height: 200px;
+  float: left;
+}
+
+.title-right {
+  float: right;
+  text-align: right;
+  /* border: 1px solid red; */
+}
+.p-venus {
+  width: 1000px;
+  /* height: 300px; */
+  float: left;
+}
+
+#planet3 {
+  width: 200px;
+  height: 250px;
+  /* float: left; */
+}
+
+#earth {
+  float: right;
+}

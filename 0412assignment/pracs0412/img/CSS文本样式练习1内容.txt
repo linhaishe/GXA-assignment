@@ -1,0 +1,11 @@
+Apache Syncope
+Apache  / Apache Syncope  / Apache Syncope Last Published: 2013-07-12
+ 
+Apache Syncope is an Open Source system for managing digital identities in enterprise environments, implemented in JEE technology and released under Apache 2.0 license.
+
+Identity management (or IdM) represents the joint result of business process and IT to manage user data on systems and applications. IdM involves considering user attributes, roles, resources and entitlements in trying to give a decent answer to the question bumping up every time in an IT administrator's mind:
+
+Who has access to What, When, How, and Why?
+
+Copyright © 2010-2013 The Apache Software Foundation. All Rights Reserved.
+ Apache, Syncope, Apache Syncope, the Apache feather logo and the Apache Syncope project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.   

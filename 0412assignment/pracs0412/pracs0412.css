@@ -1,0 +1,54 @@
+body {
+  width: 1200px;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+}
+li {
+  display: inline;
+}
+
+nav {
+  background-color: #eee;
+}
+
+#last {
+  float: right;
+}
+
+section {
+  background-color: #eee;
+  margin-top: 20px;
+  margin-bottom: 70px;
+
+  height: 300px;
+  padding: 0 58px 70px 58px;
+}
+
+p {
+  text-align: left;
+}
+
+#p3 {
+  text-align: center;
+}
+
+footer img {
+  float: right;
+}
+
+.img1 {
+  margin-top: 18px;
+  margin-left: 20px;
+}
