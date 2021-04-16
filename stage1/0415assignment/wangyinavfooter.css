@@ -276,6 +276,7 @@ nav {
   height: 120px;
   border-bottom: 1px solid lightgray;
   /* border: 1px solid blue; */
+  width: 100%;
 }
 
 .service-content .icon {
