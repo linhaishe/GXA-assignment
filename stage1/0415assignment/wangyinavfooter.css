@@ -66,7 +66,7 @@ nav {
 }
 
 .search-btn-line {
-  /* border: 1px solid pink; */
+  border: 1px solid pink;
   position: relative;
   display: flex;
   margin-right: 50px;
