@@ -1,0 +1,93 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+     * default document font size = 16px, 1rem = 16px, 100% = 16px
+     * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.con {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mainbodywid {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.vshop-banner {
+  background-image: url(https://via.placeholder.com/1440x288/ffc929/808080);
+  height: 288px;
+  width: 100%;
+}
+
+.vshop-content {
+  margin-top: 30px;
+}
+
+.sort {
+  float: right;
+  cursor: pointer;
+}
+.courses-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vshop-shopping-list {
+  width: 243px;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.shop-title {
+  font-size: 24px;
+}
+
+.select {
+  outline: none;
+}
+
+.course-des {
+  /* width: 243px; */
+  height: 127px;
+  padding: 15px;
+}
+
+.course-des p {
+  color: #ffc929;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.vshop-shopping-list {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+.vshop-shopping-list:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.2);
+}
