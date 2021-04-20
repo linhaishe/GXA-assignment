@@ -1,0 +1,94 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+     * default document font size = 16px, 1rem = 16px, 100% = 16px
+     * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.con {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.poster {
+  background-image: url(../../img/lcx/childreading.jpeg);
+  height: 520px;
+  width: 100%;
+  padding-left: 112px;
+  padding-top: 160px;
+}
+
+.poster span,
+.poster h1 {
+  font-size: 66px;
+}
+
+.poster h1 {
+  color: #ffc929;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.poster h2 {
+  font-size: 42px;
+}
+
+.content-container-line {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+}
+.content-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content-container-box img {
+  width: 255px;
+  height: 190px;
+  display: inline-block;
+  /* float: left; */
+}
+
+.content-container-line .des {
+  margin-left: 34px;
+}
+
+.content-container-line .des h3 {
+  font-size: 26px;
+  /* margin-bottom: 17px; */
+}
+
+.content-container-line .des p {
+  margin-top: 17px;
+}
+
+.content-container-box:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.5s ease;
+  transform: translate(-4px);
+}
