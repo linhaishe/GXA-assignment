@@ -410,6 +410,10 @@ html {
   font-size: 20px;
 }
 
+.newproducts-line-2 {
+  height: 33.3%;
+}
+
 .newproducts-line-2 img {
   width: 160px;
   height: 200px;
@@ -421,6 +425,12 @@ html {
   width: 50%;
   text-align: center;
   height: 310px;
+}
+
+.newproducts-line-left .des {
+  height: 30%;
+  font-size: 20px;
+  padding: 20px;
 }
 
 .newproducts-line-right {
