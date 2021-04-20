@@ -1,0 +1,229 @@
+h1,h2,h3,h4,h5,h6{
+    font-size: 16px;
+    font-family:微软雅黑,宋体;
+    font-weight: normal;
+    font-style: normal;
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('iconfont.eot');
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+        url('iconfont.woff2') format('woff2'),
+        url('iconfont.woff') format('woff'),
+        url('iconfont.ttf') format('truetype'),
+        url('iconfont.svg#iconfont') format('svg');
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    
+}
+/* 头部制作 */
+header{
+    width: 80%;
+    height: 91px;
+    margin: 0 auto;
+    /* background-color: pink; */
+}
+.tu-biao{
+    width: 115px;
+    height: 91px;
+    float: left;
+}
+.tu-biao img{
+    width: 115px;
+    height: 55px;
+    float: left;
+    margin-top: 17px;
+}
+.dao-hang-lan{
+    width: 670px;
+    height:91px;
+    float: left;
+    margin-left: 45px;
+}
+.dao-hang-lan li {
+    float: left;
+    line-height: 91px;
+    padding: 0 14px;  
+}
+.dao-hang-lan li a{
+    color:#333333;
+    }
+.dlzc{
+    width: 166px;
+    height:90px;
+    float: right;
+    /* background-color: burlywood; */
+}
+.dlzc div button:first-child{
+    width: 77px;
+    height: 39px;
+    border-radius: 18px 18px 18px 18px;
+   
+    
+    }
+.dl{
+    float: left;
+    outline:none;
+    margin-top: 20px;
+    color: #F85415;
+    border: 1px solid #F85415;
+}
+.zc{
+    float: left;
+    border: none;
+    color: white;
+    background-color: #F85415;
+    margin-top: 20px;
+    margin-left: 11px;
+}
+/* 尾部制作 */
+.weibu{
+    width: 100%;
+    height: 380px;
+    background-color: pink;
+}
+.weibu1{
+    width: 100%;
+    height: 315px;
+    background-color: #333333;
+}
+
+
+.weibu2{
+    width: 100%;
+    height: 65px;
+    background-color: #292929;
+}
+.zixun{
+    float: left;
+    width: 176px;
+    height: 186px;
+    margin-top: 54px;
+    margin-left: 136px;
+}
+.zixun p:nth-child(1){
+    color: white;
+    padding-bottom: 2px;
+}
+.zixun img{
+    padding-right: 2px;
+    padding-bottom: 26px;
+    transform: translate(-5px,0px);
+}
+.zixun p:nth-child(3){
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+.zixun p:nth-child(3)::before{
+    font-family: 'iconfont';
+    padding-right: 4px;
+    content: '\e617';
+}
+.p{
+    font-size: 12px;
+    padding:20px 0px;
+    color: #999999;
+}
+.zixun button{
+    width: 138px;
+    height: 40px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #F85415;
+    transform: translate(-7px,0px);
+    border-radius: 24px 24px 24px 24px;
+}
+.xinxi{
+    width: 120px;
+    height: 300px;
+    float: left;
+    margin: 54px;
+    margin-left: 111px;
+}
+.xinxi ul li{
+    display: inline-block;
+    margin-top: 7px;
+    transform: translate(-9px,-7px);
+}
+.xinxi ul li a{
+    display: inline-block;
+    
+    transform: translate(10px,10px);
+    color:#626262;
+}
+.p3 a{
+    margin-bottom: 10px;
+    color: white;
+    font-size: 20px;
+}
+ .xinxi img{
+    padding-right: 2px;
+    padding-bottom: 13px;
+    transform: translate(-5px,0px);
+}
+.p2{
+    width: 140px;
+    height:300px;
+    float: left;
+    transform: translate(70px,0px);
+    margin-top: 118px;
+}
+.p2 li{
+    padding: 4px 0;
+    color: #626262;
+}
+.guanzhu{
+    width: 365px;
+    height: 233px;
+    float: right;
+    margin-top: 52px;
+    margin-right: 40px;
+
+}
+.guanzhu1{
+    color: white;
+}
+.weibu2{
+    width: 100%;
+    height: 70px;
+}
+.weibu2 img{
+    transform: translate(-618px,19px);
+}
+.weibu2 p{
+    color: #626262;
+    transform: translate(-83px,-14px);
+}
+.weibu2 select{
+    width: 58px;
+    height: 28px;
+    background: #626262;
+    border: 1px solid;
+    transform: translate(430px,-36px);
+}
