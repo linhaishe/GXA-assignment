@@ -40,7 +40,9 @@ html {
 }
 
 .poster {
-  background-image: url(../../img/lcx/aboutus/aboutusposter.jpeg);
+  background: url(../../img/lcx/aboutus/aboutusposter.jpeg) no-repeat;
+  background-size: cover;
+
   height: 520px;
   width: 100%;
   padding-left: 112px;

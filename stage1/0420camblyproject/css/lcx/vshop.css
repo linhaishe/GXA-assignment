@@ -40,9 +40,17 @@ html {
 }
 
 .vshop-banner {
-  background-image: url(https://via.placeholder.com/1440x288/ffc929/808080);
+  background: url(../../img/lcx/vshop/vshopposter.png) no-repeat;
+  /* background-size: contain; */
+  background-size: cover;
+
   height: 288px;
-  width: 100%;
+  /* width: 100%; */
+}
+
+.vshop-item img {
+  width: 243px;
+  height: 243px;
 }
 
 .vshop-content {
