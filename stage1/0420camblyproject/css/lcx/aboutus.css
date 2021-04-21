@@ -40,7 +40,7 @@ html {
 }
 
 .poster {
-  background-image: url(../../img/lcx/childreading.jpeg);
+  background-image: url(../../img/lcx/aboutus/aboutusposter.jpeg);
   height: 520px;
   width: 100%;
   padding-left: 112px;
@@ -54,6 +54,7 @@ html {
 
 .poster h1 {
   color: #ffc929;
+  /* color: white; */
   display: inline-block;
   margin-left: 5px;
 }
