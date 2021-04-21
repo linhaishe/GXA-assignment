@@ -1,0 +1,105 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+     * default document font size = 16px, 1rem = 16px, 100% = 16px
+     * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.con {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mainbodywid {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.organizations-container {
+  height: 600px;
+  background-image: url(https://via.placeholder.com/1440x600/ffc929/80808);
+}
+
+.nav-brand img {
+  height: 56px;
+  width: 196px;
+}
+
+.selectoption select {
+  outline: none;
+  border: 0;
+  border-bottom: 5px solid white;
+  height: 60px;
+  width: 112px;
+  background-color: #626262;
+  cursor: pointer;
+}
+
+.selectoption select:hover {
+  background-color: #595858;
+}
+
+.btn-container {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  border: 1px solid blue;
+}
+
+.selectoption {
+  width: 112px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+.login {
+  position: absolute;
+  bottom: 0;
+  left: 112px;
+  /* height: 100%; s*/
+  border: 1px solid pink;
+  /* margin-bottom: 0; */
+}
+/* .selectoption button {
+  margin-bottom: 0;
+} */
