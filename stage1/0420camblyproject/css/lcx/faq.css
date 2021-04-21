@@ -1,0 +1,104 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+     * default document font size = 16px, 1rem = 16px, 100% = 16px
+     * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.con {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mainbodywid {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.catalog {
+  /* border: 1px solid red; */
+  width: 20%;
+  height: 450px;
+  float: left;
+  margin-right: 20px;
+  padding: 25px 104px 25px 40px;
+  background-image: url(../../img/lcx/faq/faq-nav.png);
+}
+
+.article {
+  /* border: 1px solid blue; */
+  width: 70%;
+  height: 100%;
+  float: left;
+}
+
+.faq-content-container {
+  background-color: white;
+}
+
+.faq-content-container li {
+  list-style-type: none;
+  margin-top: 25px;
+}
+
+.faq-content-container a {
+  text-decoration: none;
+  color: #393939;
+}
+
+.faq-content-container a:hover {
+  color: black;
+}
+
+.article {
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+.article h1 {
+  margin-bottom: 20px;
+}
+
+.article h5 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.article p {
+  padding: 5px;
+  font-size: 14px;
+  color: #9d9d9d;
+}
+.article div {
+  margin-top: 30px;
+}
