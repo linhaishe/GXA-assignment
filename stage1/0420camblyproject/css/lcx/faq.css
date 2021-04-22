@@ -45,7 +45,7 @@ body {
 
 .catalog {
   /* border: 1px solid red; */
-  width: 20%;
+  /* width: 20%; */
   height: 450px;
   float: left;
   margin-right: 20px;
@@ -56,7 +56,7 @@ body {
 .article {
   /* border: 1px solid blue; */
   width: 70%;
-  height: 100%;
+  /* height: 100%; */
   float: left;
 }
 
@@ -102,3 +102,9 @@ body {
 .article div {
   margin-top: 30px;
 }
+
+/* iframe {
+  border: 0;
+  height: 900px;
+  width: 70%;
+} */
