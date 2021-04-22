@@ -286,10 +286,12 @@ html {
 .sub-poster-line {
   /* border: 1px solid blue; */
   border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   width: 316px;
   height: 218px;
   text-align: center;
   background-color: #f9f9f9;
+  margin-top: -1px;
 }
 
 .sub-poster-line img {
@@ -341,7 +343,7 @@ html {
 }
 
 .pro img {
-  width: 390px;
+  width: 388px;
   height: 290px;
 }
 
@@ -359,6 +361,10 @@ html {
   float: left;
   border: 1px solid #919191;
   border-right: 0px;
+}
+
+.products .pro:last-child {
+  border-right: 1px solid #919191;
 }
 
 .products .pro div:last-child {
@@ -578,4 +584,43 @@ html {
 
 .item5 ul span {
   float: right;
+}
+.hotsale-line {
+  border: 1px solid red;
+  height: 700px;
+}
+
+.hotsale-products {
+  border: 1px solid pink;
+  width: 70%;
+  height: 640px;
+}
+
+.hotsale-rank {
+  border: 1px solid purple;
+  width: 30%;
+  height: 640px;
+}
+
+.hotsale-item-1,
+.hotsale-item-2 {
+  height: 50%;
+  border: 1px solid yellow;
+}
+
+.hotsale-item-2 {
+  display: flex;
+}
+
+.hotsale-item-3,
+.hotsale-item-4 {
+  width: 50%;
+  height: 100%;
+  border: 1px solid purple;
+}
+
+.hotsale-rank-line {
+  height: 16.6%;
+  width: 100%;
+  border: 1px solid red;
 }
