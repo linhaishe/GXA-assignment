@@ -1,0 +1,63 @@
+body {
+  background-color: #a9d7d1;
+  text-align: center;
+}
+
+h1 {
+  margin: auto;
+}
+
+#form-outer {
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 10px;
+  padding-top: 20px;
+  width: 75%;
+  max-width: 900px;
+}
+
+ul {
+  list-style: none;
+}
+
+.labels {
+  display: inline-block;
+  text-align: right;
+  width: 40%;
+  padding: 5px;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.rightTab {
+  display: inline-block;
+  text-align: left;
+  width: 48%;
+  vertical-align: middle;
+}
+
+.input-field {
+  height: 20px;
+  width: 280px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+/*勾选框左边定位*/
+.userRatings,
+input[type="checkbox"] {
+  float: left;
+  margin-right: 5px;
+}
+
+.radio,
+.checkbox {
+  position: relative;
+  left: -43px;
+  margin-left: 10px;
+  display: block;
+  padding-bottom: 10px;
+}
