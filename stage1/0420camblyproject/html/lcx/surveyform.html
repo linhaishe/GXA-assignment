@@ -9,296 +9,372 @@
       type="text/css"
       href="../../css/lcx/surveyform.css"
     />
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <link rel="stylesheet" href="../../css/headerfooter.css" />
+
     <title>Document</title>
   </head>
 
-  <h1 id="title">Survey Form</h1>
-  <div id="form-outer">
-    <p id="description">Let us know how we can improve freeCodeCamp</p>
-    <!-- 一个表单只能有一个form 标签-->
-    <form id="survey-form" method="post">
-      <div class="rowTab">
-        <div class="labels">
-          <label id="name-label" for="name">* Name: </label>
-        </div>
-        <div class="rightTab">
-          <input
-            autofocus
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            required
-          />
-        </div>
+  <body>
+    <header class="clearfix">
+      <div class="tu-biao clearfix">
+        <a href=""><img src="../img/primary.png" alt="" /></a>
       </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label id="email-label" for="email">* Email: </label>
-        </div>
-        <!-- type里填写相应的表格形式，如email,password,text,才会出现相应的html5的填写提示-->
-        <div class="rightTab">
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter your Email"
-            required
-          />
-        </div>
-      </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label id="number-label" for="age">* Age: </label>
-        </div>
-        <div class="rightTab">
-          <!--If I enter numbers outside the range of the number input, I will see an HTML5 validation error.'-->
-          <input
-            id="number"
-            type="number"
-            name="age"
-            placeholder="Age"
-            min="1"
-            max="125"
-            required
-          />
-        </div>
-      </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label for="role"
-            >hich option best describes your current role?</label
-          >
-        </div>
-        <div class="rightTab">
-          <select id="dropdown" name="role">
-            <option disabled value>Select an option</option>
-            <option value="student">Student</option>
-            <option value="fulltimejob">Full time job</option>
-            <option value="fulltimelearner">Full time learner</option>
-            <option value="prefernottosay">Prefer not to say</option>
-            <option value="other">other</option>
-          </select>
-        </div>
-      </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label for="userRatings"
-            >* How likely is that you would recommend freeCodeCamp to a
-            friend?</label
-          >
-        </div>
-        <!-- 这段代码没有错误，只是因为为inlineblock的形式，我们需要垂直布局，所以改成用li的方式进行实现。
-            <div class="rightTab">
-                <input type="radio" name="recommend" value="definitely" />Definitely
-                <input type="radio" name="recommend" value="maybe" />Maybe
-                <input type="radio" name="recommend" value="notsure" />Not sure
-            </div>
-            -->
-        <div class="rightTab">
-          <ul>
-            <li class="radio">
-              <label
-                >Definitely<input
-                  name="radio-buttons"
-                  value="1"
-                  type="radio"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="radio">
-              <label
-                >Maybe<input
-                  name="radio-buttons"
-                  value="2"
-                  type="radio"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="radio">
-              <label
-                >Not sure<input
-                  name="radio-buttons"
-                  value="3"
-                  type="radio"
-                  class="userRatings"
-              /></label>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!--
+      <nav class="dao-hang-lan clearfix">
+        <ul>
+          <li>
+            <a
+              href="file:///C:/Users/Windows%2010%E4%BC%81%E4%B8%9A%E7%89%88/Desktop/HTML/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/html/header.html"
+              >首页</a
+            >
+          </li>
+          <li><a href="">课程体系</a></li>
+          <li><a href="">北美师资</a></li>
+          <li><a href="">公开课</a></li>
+          <li><a href="">如何上课</a></li>
+          <li><a href="">下载中心</a></li>
+          <li><a href="">最新动态</a></li>
+          <li><a href="">V商城</a></li>
+        </ul>
+      </nav>
+      <div class="dlzc clearfix">
         <div>
-            <label for="userRating">* How likely is that you would recommend freeCodeCamp to a friend?</label>
-            <ul style="list-style: none;">
-                <li class="radio"><label>Definitely<input name="radio-buttons" value="1" type="radio"
-                            class="userRatings"></label></li>
+          <button class="dl clearfix">登录</button>
+        </div>
+        <div>
+          <button class="zc clearfix">注册</button>
+        </div>
+      </div>
+    </header>
 
-                <li class="radio"><label>Maybe<input name="radio-buttons" value="2" type="radio"
-                            class="userRatings"></label></li>
+    <!-- https://forum.freecodecamp.org/t/what-does-the-div-class-rowtab-do-in-the-fcc-survey-form/200139/11 -->
+    <h1>注册免费领取试听体验</h1>
+    <div id="form-outer">
+      <form
+        id="survey-form"
+        method="GET"
+        action="https://crossorigin.me/https://freecodecamp.com"
+      >
+        <!--单选按钮 radio button-->
+        <div class="rowTab">
+          <div class="labels">
+            <label id="name-label" for="name">* 姓名: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              autofocus
+              type="text"
+              name="name"
+              id="name"
+              class="input-field"
+              placeholder="请输入您的姓名"
+              required
+            />
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label id="email-label" for="email">* 邮件: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="input-field"
+              required
+              placeholder="请输入您的邮件"
+            />
+          </div>
+        </div>
+        <div class="rowTab">
+          <div class="labels">
+            <label id="number-label" for="age">* 年龄: </label>
+          </div>
+          <div class="rightTab">
+            <input
+              type="number"
+              name="age"
+              id="number"
+              min="1"
+              max="125"
+              class="input-field"
+              placeholder="请输入您的年龄"
+            />
+          </div>
+        </div>
+        <!--dropdown boxes-->
+        <div class="rowTab">
+          <div class="labels">
+            <label for="currentPos">您的职业</label>
+          </div>
+          <div class="rightTab">
+            <select id="dropdown" name="currentPos" class="dropdown">
+              <option disabled value>Select an option</option>
+              <option value="student">Student</option>
+              <option value="job">Full Time Job</option>
+              <option value="learner">Full Time Learner</option>
+              <option value="preferNo">Prefer not to say</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <!--radio boxes-->
+        <div class="rowTab">
+          <div class="labels">
+            <label for="userRating">* 您会推荐我们的网站给您的朋友吗</label>
+          </div>
+          <div class="rightTab">
+            <ul style="list-style: none">
+              <li class="radio">
+                <label
+                  >一定会<input
+                    name="radio-buttons"
+                    value="1"
+                    type="radio"
+                    class="userRatings"
+                /></label>
+              </li>
 
-                <li class="radio"><label>Not sure<input name="radio-buttons" value="3" type="radio"
-                            class="userRatings"></label></li>
+              <li class="radio">
+                <label
+                  >可能<input
+                    name="radio-buttons"
+                    value="2"
+                    type="radio"
+                    class="userRatings"
+                /></label>
+              </li>
+
+              <li class="radio">
+                <label
+                  >不会<input
+                    name="radio-buttons"
+                    value="3"
+                    type="radio"
+                    class="userRatings"
+                /></label>
+              </li>
             </ul>
+          </div>
         </div>
-        -->
-      <div class="rowTab">
-        <div class="labels">
-          <label>What do you like most in FCC:</label>
+        <!--dropdown list-->
+        <div class="rowTab">
+          <div class="labels">
+            <label for="most-like">您对我们网站最满意的部分是: </label>
+          </div>
+          <div class="rightTab">
+            <select id="most-like" name="mostLike" class="dropdown">
+              <option disabled selected value>请选择</option>
+              <option value="challenges">挑战</option>
+              <option value="projects">项目</option>
+              <option value="community">社群</option>
+              <option value="openSource">工作机会</option>
+            </select>
+          </div>
         </div>
-        <div class="rightTab">
-          <select>
-            <option value selected disabled>select an option</option>
-            <option value="challenges">challenges</option>
-            <option value="projects">projects</option>
-            <option value="community">community</option>
-            <option value="source">open source</option>
+        <!--checkboxes-->
+        <div class="rowTab">
+          <div class="labels">
+            <label for="preferences"
+              >未来我们需要提高和改善的内容<br />(可多选):
+            </label>
+          </div>
+          <div class="rightTab">
+            <ul id="preferences" style="list-style: none">
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="1"
+                    type="checkbox"
+                    class="userRatings"
+                  />老师资质</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="2"
+                    type="checkbox"
+                    class="userRatings"
+                  />校园活动</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="3"
+                    type="checkbox"
+                    class="userRatings"
+                  />亲子活动</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="4"
+                    type="checkbox"
+                    class="userRatings"
+                  />外教资质</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="5"
+                    type="checkbox"
+                    class="userRatings"
+                  />课外活动</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="6"
+                    type="checkbox"
+                    class="userRatings"
+                  />家长互助</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="7"
+                    type="checkbox"
+                    class="userRatings"
+                  />视频</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="8"
+                    type="checkbox"
+                    class="userRatings"
+                  />课后作业</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="9"
+                    type="checkbox"
+                    class="userRatings"
+                  />线下活动</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="10"
+                    type="checkbox"
+                    class="userRatings"
+                  />家长论坛</label
+                >
+              </li>
+              <li class="checkbox">
+                <label
+                  ><input
+                    name="prefer"
+                    value="10"
+                    type="checkbox"
+                    class="userRatings"
+                  />其他的内容</label
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--textarea-->
+        <div class="rowTab">
+          <div class="labels">
+            <label for="comments">更多的建议和意见</label>
+          </div>
+          <div class="rightTab">
+            <textarea
+              id="comments"
+              class="input-field"
+              style="height: 50px; resize: vertical"
+              name="comment"
+              placeholder="请在此输入您的内容..."
+            ></textarea>
+          </div>
+        </div>
+        <button id="submit" type="submit">提交</button>
+      </form>
+    </div>
+    <footer class="weibu">
+      <div class="weibu1">
+        <div class="zixun">
+          <p>客服热线</p>
+          <p><img src="../../img/项目1的图片.png" alt="" /></p>
+          <p>95753</p>
+          <span></span>
+          <p class="p">周一至周日08:30-22:00</p>
+          <button>在线咨询</button>
+        </div>
+        <nav class="xinxi">
+          <p class="p3"><a href="">公司信息</a></p>
+          <p><img src="../../img/项目1的图片.png" alt="" /></p>
+          <ul>
+            <li><a href="">关于我们</a></li>
+            <li><a href="">渠道合作</a></li>
+            <li>
+              <a
+                href="file:///C:/Users/Windows%2010%E4%BC%81%E4%B8%9A%E7%89%88/Desktop/HTML/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/html/story.html"
+                >创始人故事</a
+              >
+            </li>
+            <li><a href="">加入我们</a></li>
+            <li><a href="">隐私政策</a></li>
+            <li>
+              <a
+                href="file:///C:/Users/Windows%2010%E4%BC%81%E4%B8%9A%E7%89%88/Desktop/HTML/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/html/media.html"
+                >媒体报道</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="p2">
+          <ul>
+            <li>小恐龙乐园</li>
+            <li>teacher</li>
+            <li>常见问题</li>
+            <li>青少儿英语知识</li>
+          </ul>
+        </div>
+        <div class="guanzhu">
+          <p class="guanzhu1">关注我们</p>
+          <p><img src="../../img/项目1的图片.png" alt="" /></p>
+          <p><img src="../../img/项目作业2.png" alt="" /></p>
+          <span><img src="../../img/微信二维码.png" alt="" /></span>
+        </div>
+      </div>
+      <div class="weibu2">
+        <div class="weibu3"><img src="../../img/项目03.png" alt="" /></div>
+        <div class="weibu4">
+          <p>
+            VIPKID 京ICP证
+            150842号京ICP备14002500号-1北京大米科技有限公司出版物经营许可证(京零)字第海170127号违法和不良信息举报电话：95753举报邮箱
+            VKreport@vipkid.com.cn
+          </p>
+        </div>
+        <div class="weibu5">
+          <select name="" id="">
+            <option value="中国">中国</option>
+            <option value="美国">美国</option>
           </select>
         </div>
       </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label for="preferences"
-            >Things that should be improved in the future<br />
-            (Check all that apply):</label
-          >
-        </div>
-        <!-- 同上无错，但是inlineblock,横向展现了，我们需要垂直展现
-            <input type="checkbox" value="1" />Front-end Projects
-            <input type="checkbox" value="2" />Back-end Projects
-            <input type="checkbox" value="3" />Data Visualization
-            <input type="checkbox" value="4" />Challenges
-            <input type="checkbox" value="5" />Open Source Community
-            <input type="checkbox" value="6" />Gitter help rooms
-            <input type="checkbox" value="7" />Videos
-            <input type="checkbox" value="8" />city meetups
-            <input type="checkbox" value="9" />wiki
-            <input type="checkbox" value="10" />forum
-            <input type="checkbox" value="11" />addtional courses
-            -->
-        <div class="rightTab">
-          <ul id="preferences">
-            <li class="checkbox">
-              <label
-                >Front-end Projects<input
-                  name="prefer"
-                  value="1"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Back-end Projects<input
-                  name="prefer"
-                  value="2"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Data Visualization<input
-                  name="prefer"
-                  value="3"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Challenges<input
-                  name="prefer"
-                  value="4"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Open Source Community<input
-                  name="prefer"
-                  value="5"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Gitter help rooms<input
-                  name="prefer"
-                  value="6"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >Videos<input
-                  name="prefer"
-                  value="7"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >city meetups<input
-                  name="prefer"
-                  value="8"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >wiki<input
-                  name="prefer"
-                  value="9"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >forum<input
-                  name="prefer"
-                  value="10"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-            <li class="checkbox">
-              <label
-                >addtional courses<input
-                  name="prefer"
-                  value="11"
-                  type="checkbox"
-                  class="userRatings"
-              /></label>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="rowTab">
-        <div class="labels">
-          <label for="comments"> Any Comments or Suggestions? </label>
-        </div>
-        <div class="rightTab">
-          <textarea
-            id="comments"
-            name="comment"
-            cols="30"
-            rows="3"
-            placeholder="Enter your comment here..."
-          ></textarea>
-        </div>
-      </div>
-      <!--错误代码显示
-        <button id="submit" type="submit" value="Submit"></button>
-        -->
-      <button id="submit" type="submit">Submit</button>
-    </form>
-  </div>
+    </footer>
+  </body>
 </html>
