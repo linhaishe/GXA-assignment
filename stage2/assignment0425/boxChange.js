@@ -22,6 +22,27 @@ const turnGreen = function () {
   box.style.background = "green";
 };
 
+const dropdownListBtn = document.getElementById("dropbtn");
+const dropdownList = document.getElementById("shoplist");
+
+dropdownListBtn.onmouseover = function () {
+  mouseOver();
+  console.log("mouseover");
+};
+
+dropdownListBtn.onmouseout = function () {
+  mouseOut();
+  console.log("mouseout");
+};
+
+const mouseOver = function () {
+  dropdownList.style.display = "block";
+};
+
+const mouseOut = function () {
+  dropdownList.style.display = "none";
+};
+
 // const dropdown = document.getElementById("menu");
 
 // window.onload = function () {
