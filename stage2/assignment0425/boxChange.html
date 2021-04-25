@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/boxChange.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>控制div宽度变为200 高度变为200 隐藏 显示 平移 变绿</p>
+    <button onclick="changeWidth()">点击宽度变为200</button>
+    <button onclick="changeHeight()">点击高度变为200</button>
+    <button onclick="showHide()">隐藏/显示</button>
+    <button onclick="transform()">点击向右平移</button>
+    <button onclick="turnGreen()">点击背景变绿</button>
+    <div id="box1"></div>
+
+    <p>淘宝最上面的移入移出</p>
+    <!-- 
+    <div class="dropdown">
+      <button class="dropbtn">下拉菜单</button>
+      <div class="dropdown-content">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+      </div>
+    </div>
+
+    <div class="taobao-nav">
+      <ul>
+        <li><a href="#">淘宝首页</a></li>
+        <div id="wodetaobao">
+          <div id="nav-title"><a href="#">我的淘宝</a></div>
+          <ul id="menu-2">
+            <li><a href="#">已买到宝贝</a></li>
+            <li><a href="#">我的足迹</a></li>
+            <li><a href="#">我的上新</a></li>
+            <li><a href="#">爱逛街</a></li>
+            <li><a href="#">淘宝达人</a></li>
+            <li><a href="#">新欢</a></li>
+          </ul>
+        </div>
+        <li><a href="#">购物车</a></li>
+        <li><a href="#">收藏夹</a></li>
+        <li><a href="#">商品分类</a></li>
+        <li><a href="#">卖家中心</a></li>
+        <li><a href="#">联系客服</a></li>
+        <li><a href="#">网站导航</a></li>
+      </ul>
+    </div>
+
+    <div id="box2">
+      <div id="show">
+        <a href="#">Gorho</a>
+      </div>
+      <ul id="menu">
+        <li><a href="#">选项一</a></li>
+        <li><a href="#">选项二</a></li>
+        <li><a href="#">选项三</a></li>
+      </ul>
+    </div> -->
+
+    <div class="navbar">
+      \ <a href="#home">淘宝网首页</a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          我的淘宝
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">已买到宝贝</a>
+          <a href="#">我的足迹</a>
+          <a href="#">我的上新</a>
+          <a href="#">爱逛街</a>
+          <a href="#">淘宝达人</a>
+          <a href="#">新欢</a>
+        </div>
+      </div>
+      <a href="#shopcart">购物车</a>
+      <a href="#collection">收藏夹</a>
+      <a href="#catagory">商品分类</a>
+      <a href="#seller-center">卖家中心</a>
+      <a href="#customer-service">联系客服</a>
+      <a href="#web-nav">网站导航</a>
+    </div>
+
+    <script type="text/javascript" src="/boxChange.js"></script>
+  </body>
+</html>
