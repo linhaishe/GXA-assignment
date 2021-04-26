@@ -606,6 +606,7 @@ html {
 .hotsale-item-2 {
   height: 50%;
   border: 1px solid yellow;
+  display: flex;
 }
 
 .hotsale-item-2 {
@@ -623,4 +624,40 @@ html {
   height: 16.6%;
   width: 100%;
   border: 1px solid red;
+}
+
+.hotsale-item-1 .title,
+.hotsale-item-1 img {
+  width: 50%;
+  /* height: 50%; */
+  /* line-height: 50%; */
+}
+
+.hotsale-item-1 .title {
+  flex-flow: column;
+  display: flex;
+  /*实现垂直居中*/
+  align-items: center;
+  /*实现水平居中*/
+  justify-content: center;
+  text-align: justify;
+}
+
+.hotsale-item-3 img,
+.hotsale-item-4 img {
+  margin-left: 20%;
+  margin-top: 10px;
+  height: 75%;
+  text-align: center;
+}
+
+.hotsale-item-3 p,
+.hotsale-item-4 p {
+  font-size: 16px;
+  padding: 5px 0 0 20px;
+}
+
+.hotsale-rank-line {
+  display: flex;
+  justify-content: space-between;
 }
