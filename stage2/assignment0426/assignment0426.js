@@ -44,19 +44,19 @@ const invertSelectBtn = document.getElementById("invertSelect");
 const oInp = document
   .getElementById("assignment3-box")
   .getElementsByTagName("input");
-
+//全选
 allSelectBtn.onclick = function () {
   for (let i = 0; i < oInp.length; i++) {
     oInp[i].checked = true;
   }
 };
-
+//全不选
 noSelectBtn.onclick = function () {
   for (let i = 0; i < oInp.length; i++) {
     oInp[i].checked = false;
   }
 };
-
+//反选
 invertSelectBtn.onclick = function () {
   for (let i = 0; i < oInp.length; i++) {
     if (oInp[i].checked == true) {
