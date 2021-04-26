@@ -1,0 +1,120 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+hr {
+  margin-bottom: 60px;
+}
+
+h2 {
+  margin-top: 60px;
+}
+
+#assignment1-box {
+  display: flex;
+}
+
+#assignment1-box div {
+  margin-left: 30px;
+  height: 100px;
+  width: 100px;
+  background-color: darkgreen;
+}
+
+#assignment2-box {
+  margin-top: 30px;
+  margin-left: 30px;
+
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
+
+#assignment3-box {
+  margin-top: 40px;
+  margin-left: 60px;
+}
+
+/* 4. 模拟select下拉框 */
+/* 下拉框样式 */
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.assignment6-box {
+  margin-left: 30px;
+}
+
+#single-inp,
+#multi-inp {
+  padding-left: 20px;
+}
