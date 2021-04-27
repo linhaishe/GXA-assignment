@@ -1,0 +1,18 @@
+.task-2 div {
+  height: 100px;
+  width: 100px;
+  background-color: darkgreen;
+  display: none;
+}
+
+.btnColor {
+  color: pink;
+}
+
+.show {
+  display: block !important;
+}
+
+#result {
+  padding-left: 15px;
+}
