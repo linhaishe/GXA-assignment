@@ -118,3 +118,44 @@ h2 {
 #multi-inp {
   padding-left: 20px;
 }
+
+/* 作业5：模拟单选和多选*/
+
+.zuoye3 {
+  margin: 50px;
+}
+.zuoye3 .likeMost span {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(radio.gif) no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  margin-right: 10px;
+  /* border: 1px solid red; */
+}
+.zuoye3 .likeMost i {
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.zuoye3 .like span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background: url(icon.gif) no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  margin-right: 10px;
+}
+.zuoye3 .like i {
+  display: inline-block;
+  height: 19px;
+  line-height: 19px;
+  font-size: 16px;
+  margin-right: 20px;
+  /* border: 1px solid red; */
+}

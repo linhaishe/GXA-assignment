@@ -98,6 +98,36 @@ for (let i = 0; i < listContent.length; i++) {
   };
 }
 
+//5.第五个作业
+
+var mostSpan = document.getElementsByClassName("mostLike");
+var lenM = mostSpan.length;
+for (var i = 0; i < lenM; i++) {
+  mostSpan[i].onclick = function () {
+    for (var j = 0; j < lenM; j++) {
+      mostSpan[j].style.backgroundPosition = "0 0";
+    }
+    this.style.backgroundPosition = "0 -18px";
+  };
+}
+// 多选
+var likeSpan = document.getElementsByClassName("likeFruit");
+var lenL = likeSpan.length;
+for (var i = 0; i < lenL; i++) {
+  likeSpan[i].onclick = function () {
+    this.style.backgroundPosition = "0 -34px";
+    // console.log(typeof this.style.backgroundPosition);
+    // if (this.style.backgroundPosition == '0 0') {
+    //   this.style.backgroundPosition = '0 -34px';
+    // } else {
+    //   this.style.backgroundPosition = '0 0';
+    // }
+    // this.style.backgroundPosition == '0 0'
+    //   ? (this.style.backgroundPosition = '0 -34px')
+    //   : (this.style.backgroundPosition = '0 0');
+  };
+}
+
 //6.（选做）联动全选作业内容
 
 const singleInp = document
