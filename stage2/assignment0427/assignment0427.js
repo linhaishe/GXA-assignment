@@ -60,8 +60,8 @@ const inp2 = document.getElementById("ip2");
 const ans = document.getElementById("result");
 
 oBtn3[0].onclick = function () {
-  const val1 = Number(inp1.value);
-  const val2 = Number(inp2.value);
+  const val1 = parseInt(inp1.value);
+  const val2 = parseInt(inp2.value);
   const operation = document.getElementById("selectId").value;
 
   console.log("operation", operation);
@@ -101,12 +101,19 @@ task5Btn.onclick = function () {
   const cal = task5inp1 - task5inp2;
   console.log("task5inp", task5inp1, task5inp2);
   //Assignment to constant variable.
-  if (cal == 0) {
+  if (isNaN(task5inp1) && isNaN(task5inp2)) {
+    alert("请输入数字");
+  } else if (cal == 0) {
+    //不能将操作节点的值声明变量
+    // const spaninnerHtml = task5Span.innerHTML;
     task5Span.innerHTML = "两者数值相同";
+    // spaninnerHtml = "两者数值相同";
   } else if (cal > 0) {
     task5Span.innerHTML = "较大的数字为: " + task5inp1;
+    // spaninnerHtml = "较大的数字为: " + task5inp1;
   } else {
     task5Span.innerHTML = "较大的数字为: " + task5inp2;
+    // spaninnerHtml = "较大的数字为: " + task5inp2;
   }
 };
 
