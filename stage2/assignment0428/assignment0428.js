@@ -1,20 +1,29 @@
 //作业1：打印4行 第一行1个星星 第二行2个
 document.write("<h1>作业1：打印4行 第一行1个星星 第二行2个<h1/>" + "<hr/>");
 
+// for (let i = 0; i < 5; i++) {
+//   switch (i) {
+//     case 1:
+//       document.write("*" + "<br />");
+//       break;
+//     case 2:
+//       document.write("**" + "<br />");
+//       break;
+//     case 3:
+//       document.write("***" + "<br />");
+//       break;
+//     case 4:
+//       document.write("****" + "<br />");
+//       break;
+//   }
+// }
+
 for (let i = 0; i < 5; i++) {
-  switch (i) {
-    case 1:
-      document.write("*" + "<br />");
-      break;
-    case 2:
-      document.write("**" + "<br />");
-      break;
-    case 3:
-      document.write("***" + "<br />");
-      break;
-    case 4:
-      document.write("****" + "<br />");
-      break;
+  for (let j = 0; j <= i; j++) {
+    document.write("*");
+    if (i == j) {
+      document.write("<br/>");
+    }
   }
 }
 
