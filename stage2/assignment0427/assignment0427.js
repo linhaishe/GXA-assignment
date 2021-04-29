@@ -53,6 +53,20 @@ for (let i = 0; i < oBtn.length; i++) {
   };
 }
 
+// for (var i = 0; i < oBtn.length; i++) {
+//   //给每个btn加自定义属性
+//   oBtn[i].dataset.index = i;
+//   //给每一个加事件
+//   oBtn[i].onclick = function () {
+//     for (var j = 0; j < oBtn.length; j++) {
+//       oBtn[j].style.background = "";
+//       oDiv[j].style.display = "none";
+//     }
+//     this.style.background = "red";
+//     oDiv[this.dataset.index].style.display = "block";
+//   };
+// }
+
 //task3-简易计算器
 const oBtn3 = document.getElementById("task3").getElementsByTagName("button");
 const inp1 = document.getElementById("ip1");

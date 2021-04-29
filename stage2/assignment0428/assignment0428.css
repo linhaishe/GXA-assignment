@@ -1,0 +1,14 @@
+#taskTab div {
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+  display: none;
+}
+
+/* .hide {
+  display: none;
+} */
+
+.show {
+  display: block !important;
+}
