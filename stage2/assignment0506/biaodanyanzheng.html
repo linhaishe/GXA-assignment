@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/biaodanyanzheng.css">
+    <title>Document</title>
+  </head>
+  <body>
+      <h2>表单验证</h2>
+      <form id="form" onsubmit="submitFunc()">
+  <div>
+    <label for="">姓名</lable>
+    <input data-null="姓名不能为空" data-error="请输入正确名字" name="username" type="text" id="username"></input>
+    <span></span>
+  </div>
+  <div>
+    <label for="">手机</lable>
+   <input data-null="手机号不能为空" data-error="请输入手机号" name="tel" type="text" id="tel"></input>
+    <span></span>
+  </div>
+  <div>
+    <label for="">qq号</lable>
+    <input data-null="qq号不能为空" data-error="请输入qq号" name="qq" type="text" id="qq"></input>
+    <span></span>
+  </div>
+  <div>
+    <label for="">密码</lable>
+    <input data-null="密码不能为空" data-error="请输入正确密码" name="psw" type="text" id="psw"></input>
+    <span></span>
+  </div>
+<div>
+  <button>注册</button>
+</div>
+</form>
+<h2>简单评论</h2>
+<div class="info">
+      <label for="example">Enter Text
+      </label>
+      <input id="example" type="text"
+             name="Ntext" size="20">
+      <button id="sent" type="submit"  
+              value="Send" onclick="myFunction()">提交 </button>
+  </div>
+<ul id="para">
+</ul>
+    <script src="biaodanyanzheng.js"></script>
+  </body>
+</html>
