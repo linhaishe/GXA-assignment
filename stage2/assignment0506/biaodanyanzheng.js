@@ -44,9 +44,11 @@ function submitFunc() {
 }
 
 function myFunction() {
-  var node = document.createElement("LI");
+  var node = document.createElement("li");
+  var txtNode = document.getElementById("example");
   var txt = document.getElementById("example").value;
   var textnode = document.createTextNode(txt);
   node.appendChild(textnode);
   document.getElementById("para").appendChild(node);
+  txtNode.value = "";
 }
