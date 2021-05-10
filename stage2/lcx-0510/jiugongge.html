@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 1200px;
+      }
+      #box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        position: absolute;
+        left: 500px;
+        top: 280px;
+      }
+      #left {
+        width: 10px;
+        height: 100%;
+        background: green;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: ew-resize;
+      }
+      #right {
+        width: 10px;
+        height: 100%;
+        background: green;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: ew-resize;
+      }
+      #top {
+        width: 100%;
+        height: 10px;
+        background: green;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: ns-resize;
+      }
+      #bottom {
+        width: 100%;
+        height: 10px;
+        background: green;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        cursor: ns-resize;
+      }
+      #lefttop {
+        width: 10px;
+        height: 10px;
+        background: blue;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: nw-resize;
+      }
+      #righttop {
+        width: 10px;
+        height: 10px;
+        background: blue;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: ne-resize;
+      }
+      #leftbottom {
+        width: 10px;
+        height: 10px;
+        background: blue;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        cursor: sw-resize;
+      }
+      #rightbottom {
+        width: 10px;
+        height: 10px;
+        background: blue;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: se-resize;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="left"></div>
+      <div id="right"></div>
+      <div id="top"></div>
+      <div id="bottom"></div>
+      <div id="lefttop"></div>
+      <div id="righttop"></div>
+      <div id="leftbottom"></div>
+      <div id="rightbottom"></div>
+    </div>
+  </body>
+</html>
+<script>
+  var oRight = document.getElementById("right");
+  var oBottom = document.getElementById("bottom");
+  var oTop = document.getElementById("top");
+  var oLeft = document.getElementById("left");
+  var oBox = document.getElementById("box");
+
+  oRight.onmousedown = function () {
+    //鼠标下去的那一刻时正好的pagex
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+
+    document.onmousemove = function () {
+      //鼠标拖动后时的pagex
+      var disX = event.pageX - downX;
+      oBox.style.width = oldW + disX + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  oBottom.onmousedown = function () {
+    var downY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disY = event.pageY - downY;
+      oBox.style.height = oldH + disY + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  oTop.onmousedown = function () {
+    var topY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disY = topY - event.pageY;
+      var newH = oldH + disY;
+      var newT = topY - disY;
+      oBox.style.height = newH + "px";
+      oBox.style.top = newT + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  oLeft.onmousedown = function () {
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+
+    document.onmousemove = function () {
+      var disX = downX - event.pageX;
+      var newW = oldW + disX;
+      var newL = downX - disX;
+      oBox.style.width = newW + "px";
+      oBox.style.left = newL + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+</script>
