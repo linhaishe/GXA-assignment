@@ -112,8 +112,15 @@
   var oBottom = document.getElementById("bottom");
   var oTop = document.getElementById("top");
   var oLeft = document.getElementById("left");
+
+  var oLefttop = document.getElementById("lefttop");
+  var oRighttop = document.getElementById("righttop");
+  var oLeftbottom = document.getElementById("leftbottom");
+  var oRightbottom = document.getElementById("rightbottom");
+
   var oBox = document.getElementById("box");
 
+  //右边框
   oRight.onmousedown = function () {
     //鼠标下去的那一刻时正好的pagex
     var downX = event.pageX;
@@ -130,6 +137,7 @@
     };
   };
 
+  //下边框
   oBottom.onmousedown = function () {
     var downY = event.pageY;
     var oldH = oBox.offsetHeight;
@@ -143,6 +151,7 @@
       document.onmouseup = null;
     };
   };
+  //上边框
 
   oTop.onmousedown = function () {
     var topY = event.pageY;
@@ -160,7 +169,7 @@
       document.onmouseup = null;
     };
   };
-
+  //左边框
   oLeft.onmousedown = function () {
     var downX = event.pageX;
     var oldW = oBox.offsetWidth;
@@ -171,6 +180,98 @@
       var newL = downX - disX;
       oBox.style.width = newW + "px";
       oBox.style.left = newL + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+  //左上角
+  oLefttop.onmousedown = function () {
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+
+    var topY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disX = downX - event.pageX;
+      var newW = oldW + disX;
+      var newL = downX - disX;
+      oBox.style.width = newW + "px";
+      oBox.style.left = newL + "px";
+
+      var disY = topY - event.pageY;
+      var newH = oldH + disY;
+      var newT = topY - disY;
+      oBox.style.height = newH + "px";
+      oBox.style.top = newT + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  //右上角
+
+  oRighttop.onmousedown = function () {
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+    var topY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disX = event.pageX - downX;
+      oBox.style.width = oldW + disX + "px";
+      var disY = topY - event.pageY;
+      var newH = oldH + disY;
+      var newT = topY - disY;
+      oBox.style.height = newH + "px";
+      oBox.style.top = newT + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  //右下角
+  oRightbottom.onmousedown = function () {
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+
+    var downY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disX = event.pageX - downX;
+      oBox.style.width = oldW + disX + "px";
+      var disY = event.pageY - downY;
+      oBox.style.height = oldH + disY + "px";
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  };
+
+  //左下角
+  oLeftbottom.onmousedown = function () {
+    var downX = event.pageX;
+    var oldW = oBox.offsetWidth;
+
+    var downY = event.pageY;
+    var oldH = oBox.offsetHeight;
+
+    document.onmousemove = function () {
+      var disX = downX - event.pageX;
+      var newW = oldW + disX;
+      var newL = downX - disX;
+      oBox.style.width = newW + "px";
+      oBox.style.left = newL + "px";
+      var disY = event.pageY - downY;
+      oBox.style.height = oldH + disY + "px";
     };
     document.onmouseup = function () {
       document.onmousemove = null;
