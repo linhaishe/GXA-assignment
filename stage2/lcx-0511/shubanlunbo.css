@@ -1,0 +1,63 @@
+* {
+  margin: 0 auto;
+}
+
+div {
+  margin-top: 100px;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+ul {
+  position: absolute;
+  padding: 0;
+  height: 2000px;
+  width: 800px;
+  list-style: none;
+  transition: 0.1s all linear;
+}
+
+li {
+  height: 400px;
+  width: 800px;
+}
+
+#up {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+#down {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+}
+
+ol {
+  position: absolute;
+  right: 20px;
+  top: 35%;
+  width: 20px;
+}
+
+ol li {
+  list-style: none;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 10px;
+  height: 10px;
+  margin: 8px 0;
+}
+
+ol li.active {
+  background: white;
+}
