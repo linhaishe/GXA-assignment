@@ -4,22 +4,26 @@ var oLi = document.querySelectorAll("li");
 var n = 0;
 
 function showOff() {
-  oLi[n].className = "";
   imgs[n].className = "";
+  oLi[n].className = "";
 }
 
 function showOn() {
   imgs[n].className = "active";
+  // oLi[n].className = "active";
+  for (var i = 0; i < oLi.length; i++) {
+    oLi[i].className = "";
+  }
   oLi[n].className = "active";
 }
 
 function showFn() {
-  showOn();
+  showOff();
   n++;
   if (n >= 5) {
     n = 0;
   }
-  showOff();
+  showOn();
 }
 
 var timer = setInterval(showFn, 2000);
