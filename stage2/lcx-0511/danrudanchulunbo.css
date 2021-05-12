@@ -1,0 +1,48 @@
+* {
+  margin: 0 auto;
+}
+
+div {
+  margin-top: 100px;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+div img {
+  position: absolute;
+  height: 400px;
+  width: 800px;
+  top: 0;
+  left: 0;
+}
+
+img {
+  opacity: 0;
+  transition: opacity 1s;
+}
+img.active {
+  opacity: 1;
+}
+
+ol {
+  padding: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 45%;
+  width: 160px;
+}
+
+ol li {
+  list-style: none;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 10px;
+  height: 10px;
+  margin: 0 3px;
+  float: left;
+}
+
+ol li.active {
+  background: white;
+}
