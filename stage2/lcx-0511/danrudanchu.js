@@ -35,18 +35,13 @@ oDiv.onmouseout = function () {
   slideon = setInterval(showFn, 2000);
 };
 
-// for (var j = 0; j < oLi.length; j++) {
-//   oLi[j].dataset.index = j;
-//   oLi[j].onclick = function () {
-//     n = this.dataset.index;
-//     showFn();
-//   };
-// }
+//点击事件未完成
 
-// for (var j = 0; j < oLi.length; j++) {
-//   oLi[j].onclick = function () {
-//     slideOff(); //图片淡出
-//     n = this.innerHTML - 1;
-//     slideOn(); //图片淡出
-//   };
-// }
+for (var j = 0; j < oLi.length; j++) {
+  oLi[j].dataset.index = j;
+  oLi[j].onclick = function () {
+    showOff(); //图片淡出
+    n = this.dataset.index;
+    showOn(); //图片淡出
+  };
+}
