@@ -32,7 +32,7 @@ oDiv.onmouseover = function () {
 };
 
 oDiv.onmouseout = function () {
-  slideon = setInterval(showFn, 2000);
+  timer = setInterval(showFn, 2000);
 };
 
 //点击事件未完成
