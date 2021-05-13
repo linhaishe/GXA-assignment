@@ -1,0 +1,27 @@
+* {
+  margin: 0 auto;
+}
+
+#mainBody {
+  background-image: url(images/开始背景.png);
+  width: 320px;
+  height: 568px;
+  margin: 50px auto;
+  position: relative;
+}
+
+/* .mainBodyGameBox {
+  background-image: url(images/background_1.png);
+} */
+
+#welcomepage {
+  position: absolute;
+  /* border: 1px solid red; */
+  top: 250px;
+  left: 120px;
+}
+
+button {
+  display: block;
+  margin-top: 40px;
+}
