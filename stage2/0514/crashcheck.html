@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>crashcheck</title>
+    <style>
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background: pink;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #box2 {
+        width: 100px;
+        height: 100px;
+        background: darkgreen;
+        position: absolute;
+        top: 200px;
+        left: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+      var box1 = document.querySelector("#box1");
+      var box2 = document.querySelector("#box2");
+
+      function check(obj1, obj2) {
+        var t1 = obj1.offsetTop;
+        var b1 = obj1.offsetTop + obj1.offsetHeight;
+        var l1 = obj1.offsetLeft;
+        var r1 = obj1.offsetLeft + obj1.offsetWidth;
+
+        var t2 = obj2.offsetTop;
+        var b2 = obj2.offsetTop + obj2.offsetHeight;
+        var l2 = obj2.offsetLeft;
+        var r2 = obj2.offsetLeft + obj2.offsetWidth;
+        //需要拿一个盒子的四个边和另一个盒子的四个边比较，否则会出问题
+        //注释的内容为错误内容
+        //if (t1 > b2 || r1 < l1 || l1 > r2 || b1 < t2) {
+        if (r2 < l1 || l2 > r1 || t2 > b1 || b2 < t1) {
+          //如果距离大则不变颜色，则写false
+          return false;
+        } else {
+          //如果碰撞则为真
+          return true;
+        }
+      }
+
+      box1.onmousedown = function () {
+        var disX = event.offsetX;
+        var disY = event.offsetY;
+        //这里为什么写docuemnt,而不是box1.?
+        document.onmousemove = function () {
+          var l = event.pageX - disX;
+          var t = event.pageY - disY;
+          box1.style.left = l + "px";
+          box1.style.top = t + "px";
+          if (check(box1, box2)) {
+            box2.style.background = "yellow";
+          } else {
+            box2.style.background = "darkgreen";
+          }
+        };
+
+        document.onmouseup = function () {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        };
+      };
+    </script>
+  </body>
+</html>

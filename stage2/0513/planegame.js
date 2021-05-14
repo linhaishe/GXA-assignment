@@ -9,9 +9,28 @@ var toRight = false;
 var toBottom = false;
 var bulletArr = [];
 var enemyArr = [];
+var isDead = false;
 
 function getRandomPlace(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
+}
+
+function checkIfCrash(obj1, obj2) {
+  var t1 = obj1.offsetTop;
+  var b1 = obj1.offsetTop + obj1.offsetHeight;
+  var l1 = obj1.offsetLeft;
+  var r1 = obj1.offsetLeft + obj1.offsetWidth;
+
+  var t2 = obj2.offsetTop;
+  var b2 = obj2.offsetTop + obj2.offsetHeight;
+  var l2 = obj2.offsetLeft;
+  var r2 = obj2.offsetLeft + obj2.offsetWidth;
+
+  if (r2 < l1 || l2 > r1 || t2 > b1 || b2 < t1) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 // oStrat.onclick = function () {
@@ -43,7 +62,8 @@ function startGame() {
   );
   setInterval(playerMove, 30);
   setInterval(bulletMove, 30);
-  setInterval(enemyMove, 300);
+  setInterval(enemyMove, 60);
+  setInterval(checkCrash, 200);
 
   setInterval(function () {
     new EnemyPlane(
@@ -51,7 +71,7 @@ function startGame() {
       getRandomPlace(0, oPlayBox.offsetWidth - 34),
       -24,
       4,
-      4
+      1
     );
   }, 500);
 }
@@ -196,6 +216,7 @@ function EnemyPlane(src, x, y, speed, blood) {
   this.y = y;
   this.speed = speed;
   this.blood = blood;
+  this.isdead = false;
   this.node = document.createElement("img");
 
   this.init();
@@ -220,7 +241,12 @@ function enemyMove() {
       oPlayBox.removeChild(enemyArr[i].node);
       enemyArr.splice(i, 1);
     } else {
-      enemyArr[i].move();
+      if (enemyArr[i].isDead) {
+        oPlayBox.removeChild(enemyArr[i].node);
+        enemyArr.splice(i, 1);
+      } else {
+        enemyArr[i].move();
+      }
     }
   }
 }
@@ -264,3 +290,25 @@ document.onkeyup = function () {
       break;
   }
 };
+
+function checkCrash() {
+  for (var i = 0; i < enemyArr.length; i++) {
+    for (var j = 0; j < bulletArr.length; j++) {
+      //是enemyArr[i].node, bulletArr[j].node!!!不是enemyArr[i],bulletArr[j]
+      if (!enemyArr[i].isDead) {
+        if (checkIfCrash(enemyArr[i].node, bulletArr[j].node)) {
+          enemyArr[i].blood--;
+          if (enemyArr[i].blood == 0) {
+            enemyArr[i].node.src = "images/小飞机爆炸.gif";
+            //将判断放入enemyMove()函数中
+            // planeBox.removeChild(enemyArr[i].node);
+            // enemyArr.splice(i, 1);
+            enemyArr[i].isDead = true;
+          }
+          oPlayBox.removeChild(bulletArr[j].node);
+          bulletArr.splice(j, 1);
+        }
+      }
+    }
+  }
+}
