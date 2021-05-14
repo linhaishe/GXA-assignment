@@ -8,6 +8,7 @@ var toTop = false;
 var toRight = false;
 var toBottom = false;
 var bulletArr = [];
+var enemyArr = [];
 
 function getRandomPlace(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -42,6 +43,8 @@ function startGame() {
   );
   setInterval(playerMove, 30);
   setInterval(bulletMove, 30);
+  setInterval(enemyMove, 300);
+
   setInterval(function () {
     new EnemyPlane(
       "images/enemy1_fly_1.png",
@@ -152,19 +155,23 @@ Bullet.prototype.init = function () {
 Bullet.prototype.move = function () {
   //子弹消失
   //此方法只是让界面的图片消失，没有消除节点和数组内的节点，节点会不断增加，需要实现子弹节点消失和节点移除两部分内容
-  var t = this.node.offsetTop - this.speed;
-  if (t <= -14) {
-    this.node.style.display = "none";
-  }
-  this.node.style.top = t + "px";
-  // this.node.style.top = this.node.offsetTop - this.speed + "px";
+  // var t = this.node.offsetTop - this.speed;
+  // if (t <= -14) {
+  //   this.node.style.display = "none";
+  // }
+  // this.node.style.top = t + "px";
+  this.node.style.top = this.node.offsetTop - this.speed + "px";
 };
 
 function bulletMove() {
-  for (var i = 0; i < bulletArr.length; i++) {
-    bulletArr[i].move();
+  for (var j = 0; j < bulletArr.length; j++) {
+    if (bulletArr[j].node.offsetTop <= -bulletArr[j].node.offsetHeight) {
+      oPlayBox.removeChild(bulletArr[j].node);
+      bulletArr.splice(j, 1);
+    } else {
+      bulletArr[j].move();
+    }
   }
-  // console.log("bulletArr", bulletArr);
 }
 
 function playerMove() {
@@ -200,7 +207,23 @@ EnemyPlane.prototype.init = function () {
   this.node.style.left = this.x + "px";
   this.node.style.top = this.y + "px";
   oPlayBox.appendChild(this.node);
+  enemyArr.push(this);
 };
+
+EnemyPlane.prototype.move = function () {
+  this.node.style.top = this.node.offsetTop + this.speed + "px";
+};
+
+function enemyMove() {
+  for (var i = 0; i < enemyArr.length; i++) {
+    if (enemyArr[i].node.offsetTop >= oPlayBox.offsetHeight + 24) {
+      oPlayBox.removeChild(enemyArr[i].node);
+      enemyArr.splice(i, 1);
+    } else {
+      enemyArr[i].move();
+    }
+  }
+}
 
 document.onkeydown = function () {
   switch (event.keyCode) {
