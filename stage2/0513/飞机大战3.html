@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 320px;
+            height: 568px;
+            background: url(images/background_1.png);
+            margin: 20px auto;
+            position: relative;
+        }
+        #welcome,#planeBox{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        #planeBox{
+            display: none;
+        }
+        #welcome h1{
+            margin-top: 120px;
+            text-align: center;
+        }
+        #welcome button{
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+        }
+        #start{
+            background: chocolate;
+            display: block;
+            margin: 50px auto 0;
+        }
+        #exit{
+            background:linear-gradient(90deg,rgba(161, 68, 68, 0.329),rgb(70, 75, 70));
+            display: block;
+            margin: 30px auto 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="welcome">
+            <h1>欢迎光临~</h1>
+            <button id="start">开始</button>
+            <button id="exit">退出</button>
+        </div>
+        <div id="planeBox">
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function rnd(n,m){
+        return Math.floor(Math.random()*(m-n)+n)
+    }
+    var oStart=document.querySelector('#start');
+    var oExit=document.querySelector('#exit');
+    var welcome=document.querySelector('#welcome');
+    var planeBox=document.querySelector('#planeBox');
+    var myPlane;
+    var bTop=false;
+    var bLeft=false;
+    var bRight=false;
+    var bBottom=false;
+    var bulletArr=[];
+    var enemyArr=[];
+
+    //开始功能
+    function start(){
+        //1、开始的界面消失
+        welcome.style.display='none';
+        //2、游戏页面显示出来
+        planeBox.style.display='block';
+        //3、玩家飞机出现
+        myPlane=new MyPlane('images/myplane.gif',planeBox.offsetWidth/2-33,planeBox.offsetHeight-80,2,1);
+        //4、让玩家飞机启动
+        setInterval(playerMove,30);
+        //5、让子弹飞起来
+        setInterval(bulletMove,30);
+        //6、敌机不断出现
+        setInterval(function(){
+            new EnemyPlane('images/enemy1_fly_1.png',rnd(0,planeBox.offsetWidth-34),-24,1,1);
+        },200)
+        //7、让敌机不断的运动
+        setInterval(enemyMove,30);
+    }
+    oStart.onclick=start
+
+    //推出功能  点击后页面关闭
+    oExit.onclick=function(){
+        close();
+    }
+
+    //玩家飞机的构造函数
+    function MyPlane(src,x,y,speed,blood){
+        this.src=src;
+        this.x=x;
+        this.y=y;
+        this.speed=speed;
+        this.blood=blood;
+        this.node=document.createElement('img');
+
+        this.init();
+    }
+    MyPlane.prototype.init=function(){
+        this.node.src=this.src;
+        this.node.style.position='absolute';
+        this.node.style.left=this.x+'px';
+        this.node.style.top=this.y+"px";
+        planeBox.appendChild(this.node);
+    }
+    MyPlane.prototype.toTop=function(){
+        var t=this.node.offsetTop-this.speed;
+        if(t<=0){
+            t=0
+        }
+        this.node.style.top=t+'px'
+    }
+    MyPlane.prototype.toLeft=function(){
+        var l=this.node.offsetLeft-this.speed;
+        if(l<=0){
+            l=0;
+        }
+        this.node.style.left=l+'px'
+    }
+    MyPlane.prototype.toRight=function(){
+        var l=this.node.offsetLeft+this.speed;
+        if(l>=planeBox.offsetWidth-66){
+            l=planeBox.offsetWidth-66
+        }
+        this.node.style.left=l+'px'
+    }
+    MyPlane.prototype.toBottom=function(){
+        var t=this.node.offsetTop+this.speed;
+        if(t>=planeBox.offsetHeight-80){
+            t=planeBox.offsetHeight-80
+        }
+        this.node.style.top=t+'px'
+    }
+    MyPlane.prototype.shoot=function(){
+        new Bullet('images/bullet1.png',myPlane.node.offsetLeft+30,myPlane.node.offsetTop-14,3);
+    }
+    //定时器里面飞机移动的函数
+    function playerMove(){
+        if(bTop){
+            myPlane.toTop();
+        }
+        if(bLeft){
+            myPlane.toLeft();
+        }
+        if(bRight){
+            myPlane.toRight();
+        }
+        if(bBottom){
+            myPlane.toBottom();
+        }
+    }
+    //子弹的构造函数
+    function Bullet(src,x,y,speed){
+        this.src=src;
+        this.x=x;
+        this.y=y;
+        this.speed=speed;
+        this.node=document.createElement('img');
+
+        this.init();
+    }
+    Bullet.prototype.init=function(){
+        this.node.src=this.src;
+        this.node.style.position='absolute';
+        this.node.style.left=this.x+'px';
+        this.node.style.top=this.y+'px';
+        planeBox.appendChild(this.node);
+        bulletArr.push(this);
+    }
+    Bullet.prototype.move=function(){
+        this.node.style.top=this.node.offsetTop-this.speed+'px';
+    }
+    //定时器让子弹飞
+    function bulletMove(){
+        for(var i=0;i<bulletArr.length;i++){
+            if(bulletArr[i].node.offsetTop<=-bulletArr[i].node.offsetHeight){
+                //超出范围的消失
+                //1、页面节点消失
+                planeBox.removeChild(bulletArr[i].node);
+                //2、飞机数组里面的值消失
+                bulletArr.splice(i,1);
+            }else{
+                //屏幕范围内的运动
+                bulletArr[i].move();
+            }
+            
+        }
+    }
+    //敌机的构造函数
+    function EnemyPlane(src,x,y,speed,blood){
+        this.src=src;
+        this.x=x;
+        this.y=y;
+        this.blood=blood;
+        this.speed=speed;
+        this.node=document.createElement('img');
+        this.init();
+    }
+    EnemyPlane.prototype.init=function(){
+        this.node.src=this.src;
+        this.node.style.position='absolute';
+        this.node.style.left=this.x+'px';
+        this.node.style.top=this.y+'px';
+        planeBox.appendChild(this.node);
+        enemyArr.push(this);
+    }
+    EnemyPlane.prototype.move=function(){
+        this.node.style.top=this.node.offsetTop+this.speed+'px';
+    }
+
+    function enemyMove(){
+        for(var i=0;i<enemyArr.length;i++){
+            if(enemyArr[i].node.offsetTop>=planeBox.offsetHeight){
+                //超出范围
+                planeBox.removeChild(enemyArr[i].node);
+                enemyArr.splice(i,1)
+            }else{
+                enemyArr[i].move();
+            }
+        }
+    }
+    //键盘功能
+    document.onkeydown=function(){
+        switch(event.keyCode){
+            case 37:
+                bLeft=true;
+                break;
+            case 38:
+                bTop=true;
+                break;
+            case 39:
+                bRight=true;
+                break;
+            case 40:
+                bBottom=true;
+                break;
+            case 32:
+                myPlane.shoot();
+                break;
+            case 13:
+                start()
+                break;
+        }
+    }
+    document.onkeyup=function(){
+        switch(event.keyCode){
+            case 37:
+                bLeft=false;
+                break;
+            case 38:
+                bTop=false;
+                break;
+            case 39:
+                bRight=false;
+                break;
+            case 40:
+                bBottom=false;
+                break;
+        }
+    }
+</script>
