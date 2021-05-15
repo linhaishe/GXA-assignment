@@ -64,7 +64,7 @@ function startGame() {
   setInterval(bulletMove, 30);
   setInterval(enemyMove, 60);
   //之前事件设置为200，事件定时过长，导致碰撞事件未被检测，时间改到50左右即可
-  setInterval(checkCrash, 50);
+  setInterval(checkCrash, 80);
 
   setInterval(function () {
     new EnemyPlane(
