@@ -63,7 +63,8 @@ function startGame() {
   setInterval(playerMove, 30);
   setInterval(bulletMove, 30);
   setInterval(enemyMove, 60);
-  setInterval(checkCrash, 200);
+  //之前事件设置为200，事件定时过长，导致碰撞事件未被检测，时间改到50左右即可
+  setInterval(checkCrash, 50);
 
   setInterval(function () {
     new EnemyPlane(
@@ -216,7 +217,7 @@ function EnemyPlane(src, x, y, speed, blood) {
   this.y = y;
   this.speed = speed;
   this.blood = blood;
-  this.isdead = false;
+  this.isDead = false;
   this.node = document.createElement("img");
 
   this.init();
