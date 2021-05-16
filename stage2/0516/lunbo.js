@@ -31,12 +31,12 @@ window.onload = function () {
       } else {
         list.style.left = left + "px";
         //如果为第一幅图片，再按<<的按钮，直接跳到最后一个图片
-        if (left > -330) {
-          list.style.left = -330 * len + "px";
+        if (left > -300) {
+          list.style.left = -300 * len + "px";
         }
         //如果为最后一幅图片，再按>>的按钮，直接跳到第一个图片
-        if (left < -330 * len) {
-          list.style.left = "-330px";
+        if (left < -300 * len) {
+          list.style.left = "-300px";
         }
         animated = false;
       }
@@ -74,7 +74,7 @@ window.onload = function () {
     } else {
       index += 1;
     }
-    animate(-330);
+    animate(-300);
     showButton();
   };
   //点击向前的箭头，执行animate函数，翻页
@@ -87,7 +87,7 @@ window.onload = function () {
     } else {
       index -= 1;
     }
-    animate(330);
+    animate(300);
     showButton();
   };
   // 图片滚动，小圆点要相应的变化
@@ -100,7 +100,7 @@ window.onload = function () {
         return;
       }
       var myIndex = parseInt(this.getAttribute("index"));
-      var offset = -330 * (myIndex - index);
+      var offset = -300 * (myIndex - index);
 
       animate(offset);
       index = myIndex;
