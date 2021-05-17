@@ -25,3 +25,7 @@ button {
   display: block;
   margin-top: 40px;
 }
+
+#score {
+  display: none;
+}

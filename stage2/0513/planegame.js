@@ -2,6 +2,8 @@ var oStrat = document.querySelector("#strat");
 var oExit = document.querySelector("#exit");
 var oPlayBox = document.querySelector("#mainBody");
 var welcomePage = document.querySelector("#welcomepage");
+var scoreDiv = document.querySelector("#score");
+var scoreValue = document.querySelector("#num");
 var myPlane;
 var toLeft = false;
 var toTop = false;
@@ -10,7 +12,17 @@ var toBottom = false;
 var bulletArr = [];
 var enemyArr = [];
 var isDead = false;
+var timer1;
+var timer2;
+var timer3;
+var timer4;
+var timer5;
+var score = 0;
 
+//未完成功能：
+//1.玩家飞机和敌机碰撞检测
+//游戏结束函数：定时器清除
+//积分
 function getRandomPlace(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
@@ -52,6 +64,7 @@ function startGame() {
   welcomePage.style.display = "none";
   //   welcomepage.style.display = "none";
   oPlayBox.style.backgroundImage = "url('images/background_1.png')";
+  scoreDiv.style.display = "block";
 
   myPlane = new NewPlane(
     "images/myplane.gif",
@@ -60,21 +73,36 @@ function startGame() {
     8,
     1
   );
-  setInterval(playerMove, 30);
-  setInterval(bulletMove, 30);
-  setInterval(enemyMove, 60);
-  //之前事件设置为200，事件定时过长，导致碰撞事件未被检测，时间改到50左右即可
-  setInterval(checkCrash, 80);
 
-  setInterval(function () {
+  timer1 = setInterval(playerMove, 30);
+  timer2 = setInterval(bulletMove, 30);
+  timer3 = setInterval(enemyMove, 60);
+  timer4 = setInterval(checkCrash, 80);
+  timer5 = setInterval(function () {
     new EnemyPlane(
       "images/enemy1_fly_1.png",
       getRandomPlace(0, oPlayBox.offsetWidth - 34),
       -24,
       4,
+      1,
       1
     );
   }, 500);
+
+  // setInterval(playerMove, 30);
+  // setInterval(bulletMove, 30);
+  // setInterval(enemyMove, 60);
+  // //之前事件设置为200，事件定时过长，导致碰撞事件未被检测，时间改到50左右即可
+  // setInterval(checkCrash, 80);
+  // setInterval(function () {
+  //   new EnemyPlane(
+  //     "images/enemy1_fly_1.png",
+  //     getRandomPlace(0, oPlayBox.offsetWidth - 34),
+  //     -24,
+  //     4,
+  //     1
+  //   );
+  // }, 500);
 }
 
 oStrat.addEventListener("click", startGame, false);
@@ -211,13 +239,14 @@ function playerMove() {
 }
 
 //敌机构造函数
-function EnemyPlane(src, x, y, speed, blood) {
+function EnemyPlane(src, x, y, speed, blood, score) {
   this.src = src;
   this.x = x;
   this.y = y;
   this.speed = speed;
   this.blood = blood;
   this.isDead = false;
+  this.score = score;
   this.node = document.createElement("img");
 
   this.init();
@@ -292,11 +321,14 @@ document.onkeyup = function () {
   }
 };
 
+//碰撞检测
+
 function checkCrash() {
   for (var i = 0; i < enemyArr.length; i++) {
     for (var j = 0; j < bulletArr.length; j++) {
       //是enemyArr[i].node, bulletArr[j].node!!!不是enemyArr[i],bulletArr[j]
       if (!enemyArr[i].isDead) {
+        //敌机和子弹碰撞
         if (checkIfCrash(enemyArr[i].node, bulletArr[j].node)) {
           enemyArr[i].blood--;
           if (enemyArr[i].blood == 0) {
@@ -305,6 +337,10 @@ function checkCrash() {
             // planeBox.removeChild(enemyArr[i].node);
             // enemyArr.splice(i, 1);
             enemyArr[i].isDead = true;
+            //统计分数
+            score += enemyArr[i].score;
+            console.log(enemyArr[i].score);
+            scoreValue.innerHTML = score;
           }
           oPlayBox.removeChild(bulletArr[j].node);
           bulletArr.splice(j, 1);
@@ -312,4 +348,30 @@ function checkCrash() {
       }
     }
   }
+  //飞机和敌机相撞
+
+  for (var i = 0; i < enemyArr.length; i++) {
+    if (checkIfCrash(enemyArr[i].node, myPlane.node)) {
+      myPlane.node.src = "images/本方飞机爆炸.gif";
+      gameOver();
+    }
+  }
+}
+
+function gameOver() {
+  //清除定时器
+  clearInterval(timer1);
+  clearInterval(timer2);
+  clearInterval(timer3);
+  clearInterval(timer4);
+  clearInterval(timer5);
+  //
+  setInterval(function () {
+    // oPlayBox.innerHTML = "";
+    welcomePage.style.display = "block";
+    myPlane = null;
+    oPlayBox.style.backgroundImage = "url('images/开始背景.png')";
+    score = 0;
+    scoreValue.innerHTML = "0";
+  }, 1000);
 }
