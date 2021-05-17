@@ -19,6 +19,7 @@ var timer3;
 var timer4;
 var timer5;
 var score = 0;
+var isStart = false;
 
 //未完成功能：
 //1.玩家飞机和敌机碰撞检测
@@ -61,23 +62,51 @@ function checkIfCrash(obj1, obj2) {
 //   setInterval(playerMove, 30);
 // };
 
+//开始功能
 function startGame() {
-  welcomePage.style.display = "none";
-  oPlayBox.style.display = "block";
-  // oPlayBox.style.backgroundImage = "url('images/background_1.png')";
-  scoreDiv.style.display = "block";
+  //游戏开始之后设置isStart取反
+  if (isStart) {
+    clearInterval(timer1);
+    clearInterval(timer2);
+    clearInterval(timer3);
+    clearInterval(timer4);
+    clearInterval(timer5);
+    //<div id="stop">暂停</div>
+    var oDiv = document.createElement("div");
+    oDiv.innerHTML = "暂停";
+    oDiv.id = "stop";
+    planeBox.appendChild(oDiv);
+  } else {
+    var oDiv = document.getElementById("stop");
+    //游戏开始时获取暂停标签元素，并移除
+    var oDiv = document.getElementById("stop");
+    if (oDiv) {
+      planeBox.removeChild(oDiv);
+    }
+    //判断自己的飞机是否出现，如果出现，则开始游戏，myPlane声明时候咩有赋值，则值为null,为flase,当游戏开始时，飞机已经被构造函数构造出，则已存在，取反变成true
+    if (!myPlane) {
+      welcomePage.style.display = "none";
+      oPlayBox.style.display = "block";
+      // oPlayBox.style.backgroundImage = "url('images/background_1.png')";
+      scoreDiv.style.display = "block";
 
-  myPlane = new NewPlane(
-    "images/myplane.gif",
-    oPlayBox.offsetWidth / 2 - 33,
-    oPlayBox.offsetHeight - 80,
-    8,
-    1
-  );
+      myPlane = new NewPlane(
+        "images/myplane.gif",
+        oPlayBox.offsetWidth / 2 - 33,
+        oPlayBox.offsetHeight - 80,
+        8,
+        1
+      );
+    }
+  }
 
+  //玩家飞机启动
   timer1 = setInterval(playerMove, 30);
+  //子弹设计
   timer2 = setInterval(bulletMove, 30);
+  //敌机运动
   timer3 = setInterval(enemyMove, 60);
+  //检查飞机是否相撞
   timer4 = setInterval(checkCrash, 80);
   timer5 = setInterval(function () {
     new EnemyPlane(
@@ -89,7 +118,7 @@ function startGame() {
       1
     );
   }, 500);
-
+  isStart = !isStart;
   // setInterval(playerMove, 30);
   // setInterval(bulletMove, 30);
   // setInterval(enemyMove, 60);
@@ -153,8 +182,8 @@ NewPlane.prototype.toRight = function () {
 
 NewPlane.prototype.toBottom = function () {
   var btm = this.node.offsetTop + this.speed;
-  if (btm >= oPlaneBox.offsetHeight - 80) {
-    btm = oPlaneBox.offsetHeight - 80;
+  if (btm >= oPlaneBox.node.offsetHeight - 80) {
+    btm = oPlaneBox.node.offsetHeight - 80;
   }
 
   this.node.style.top = btm + "px";
@@ -300,7 +329,9 @@ document.onkeydown = function () {
       startGame();
       break;
     case 87:
-      myPlane.shoot();
+      if (isStart) {
+        myPlane.shoot();
+      }
       break;
   }
 };
@@ -375,5 +406,14 @@ function gameOver() {
     scoreDiv.style.display = "none";
     score = 0;
     scoreValue.innerHTML = "0";
+    isStart = false;
+    //敌机数组清空
+    enemyArr = [];
+    //子弹数组清空
+    bulletArr = [];
+    //玩家飞机清空
+    myPlane = null;
   }, 1000);
 }
+
+//276 80
