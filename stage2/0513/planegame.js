@@ -21,10 +21,6 @@ var timer5;
 var score = 0;
 var isStart = false;
 
-//未完成功能：
-//1.玩家飞机和敌机碰撞检测
-//游戏结束函数：定时器清除
-//积分
 function getRandomPlace(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
@@ -47,21 +43,6 @@ function checkIfCrash(obj1, obj2) {
   }
 }
 
-// oStrat.onclick = function () {
-//   welcomePage.style.display = "none";
-//   //   welcomepage.style.display = "none";
-//   oPlayBox.style.backgroundImage = "url('images/background_1.png')";
-
-//   myPlane = new NewPlane(
-//     "images/myplane.gif",
-//     mainBody.offsetWidth / 2 - 33,
-//     mainBody.offsetHeight - 80,
-//     8,
-//     1
-//   );
-//   setInterval(playerMove, 30);
-// };
-
 //开始功能
 function startGame() {
   //游戏开始之后设置isStart取反
@@ -73,16 +54,23 @@ function startGame() {
     clearInterval(timer5);
     //<div id="stop">暂停</div>
     var oDiv = document.createElement("div");
+
     oDiv.innerHTML = "暂停";
     oDiv.id = "stop";
-    planeBox.appendChild(oDiv);
+    console.log("oDiv", oDiv);
+
+    oPlayBox.appendChild(oDiv);
   } else {
-    var oDiv = document.getElementById("stop");
+    //不能放在这里
+    //isStart = !isStart;
     //游戏开始时获取暂停标签元素，并移除
     var oDiv = document.getElementById("stop");
+    console.log("oDiv", oDiv);
+
     if (oDiv) {
-      planeBox.removeChild(oDiv);
+      oPlayBox.removeChild(oDiv);
     }
+
     //判断自己的飞机是否出现，如果出现，则开始游戏，myPlane声明时候咩有赋值，则值为null,为flase,当游戏开始时，飞机已经被构造函数构造出，则已存在，取反变成true
     if (!myPlane) {
       welcomePage.style.display = "none";
@@ -98,41 +86,25 @@ function startGame() {
         1
       );
     }
+    timer1 = setInterval(playerMove, 30);
+    //子弹设计
+    timer2 = setInterval(bulletMove, 30);
+    //敌机运动
+    timer3 = setInterval(enemyMove, 60);
+    //检查飞机是否相撞
+    timer4 = setInterval(checkCrash, 80);
+    timer5 = setInterval(function () {
+      new EnemyPlane(
+        "images/enemy1_fly_1.png",
+        getRandomPlace(0, oPlayBox.offsetWidth - 34),
+        -24,
+        4,
+        1,
+        1
+      );
+    }, 500);
   }
-
-  //玩家飞机启动
-  timer1 = setInterval(playerMove, 30);
-  //子弹设计
-  timer2 = setInterval(bulletMove, 30);
-  //敌机运动
-  timer3 = setInterval(enemyMove, 60);
-  //检查飞机是否相撞
-  timer4 = setInterval(checkCrash, 80);
-  timer5 = setInterval(function () {
-    new EnemyPlane(
-      "images/enemy1_fly_1.png",
-      getRandomPlace(0, oPlayBox.offsetWidth - 34),
-      -24,
-      4,
-      1,
-      1
-    );
-  }, 500);
   isStart = !isStart;
-  // setInterval(playerMove, 30);
-  // setInterval(bulletMove, 30);
-  // setInterval(enemyMove, 60);
-  // //之前事件设置为200，事件定时过长，导致碰撞事件未被检测，时间改到50左右即可
-  // setInterval(checkCrash, 80);
-  // setInterval(function () {
-  //   new EnemyPlane(
-  //     "images/enemy1_fly_1.png",
-  //     getRandomPlace(0, oPlayBox.offsetWidth - 34),
-  //     -24,
-  //     4,
-  //     1
-  //   );
-  // }, 500);
 }
 
 oStrat.addEventListener("click", startGame, false);
@@ -300,10 +272,12 @@ function enemyMove() {
     if (enemyArr[i].node.offsetTop >= oPlayBox.offsetHeight + 24) {
       oPlayBox.removeChild(enemyArr[i].node);
       enemyArr.splice(i, 1);
+      break;
     } else {
       if (enemyArr[i].isDead) {
         oPlayBox.removeChild(enemyArr[i].node);
         enemyArr.splice(i, 1);
+        break;
       } else {
         enemyArr[i].move();
       }
@@ -374,8 +348,10 @@ function checkCrash() {
             console.log(enemyArr[i].score);
             scoreValue.innerHTML = score;
           }
+          //子弹删除
           oPlayBox.removeChild(bulletArr[j].node);
           bulletArr.splice(j, 1);
+          break;
         }
       }
     }
@@ -384,6 +360,7 @@ function checkCrash() {
 
   for (var i = 0; i < enemyArr.length; i++) {
     if (checkIfCrash(enemyArr[i].node, myPlane.node)) {
+      // enemyArr[i].isDead = true;
       myPlane.node.src = "images/本方飞机爆炸.gif";
       gameOver();
     }
