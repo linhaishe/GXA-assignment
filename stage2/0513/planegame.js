@@ -1,6 +1,7 @@
 var oStrat = document.querySelector("#strat");
 var oExit = document.querySelector("#exit");
-var oPlayBox = document.querySelector("#mainBody");
+var oPlayBox = document.querySelector("#planeBox");
+//var mainBody = document.querySelector("#mainBody");
 var welcomePage = document.querySelector("#welcomepage");
 var scoreDiv = document.querySelector("#score");
 var scoreValue = document.querySelector("#num");
@@ -62,14 +63,14 @@ function checkIfCrash(obj1, obj2) {
 
 function startGame() {
   welcomePage.style.display = "none";
-  //   welcomepage.style.display = "none";
-  oPlayBox.style.backgroundImage = "url('images/background_1.png')";
+  oPlayBox.style.display = "block";
+  // oPlayBox.style.backgroundImage = "url('images/background_1.png')";
   scoreDiv.style.display = "block";
 
   myPlane = new NewPlane(
     "images/myplane.gif",
-    mainBody.offsetWidth / 2 - 33,
-    mainBody.offsetHeight - 80,
+    oPlayBox.offsetWidth / 2 - 33,
+    oPlayBox.offsetHeight - 80,
     8,
     1
   );
@@ -127,7 +128,7 @@ NewPlane.prototype.init = function () {
   this.node.style.position = "absolute";
   this.node.style.left = this.x + "px";
   this.node.style.top = this.y + "px";
-  mainBody.appendChild(this.node);
+  oPlayBox.appendChild(this.node);
 };
 
 //控制飞机上下左右飞行
@@ -143,8 +144,8 @@ NewPlane.prototype.toTop = function () {
 
 NewPlane.prototype.toRight = function () {
   var r = this.node.offsetLeft + this.speed;
-  if (r >= 254) {
-    r = 254;
+  if (r >= oPlayBox.offsetWidth - 66) {
+    r = oPlayBox.offsetWidth - 66;
   }
 
   this.node.style.left = r + "px";
@@ -152,8 +153,8 @@ NewPlane.prototype.toRight = function () {
 
 NewPlane.prototype.toBottom = function () {
   var btm = this.node.offsetTop + this.speed;
-  if (btm >= 488) {
-    btm = 488;
+  if (btm >= oPlaneBox.offsetHeight - 80) {
+    btm = oPlaneBox.offsetHeight - 80;
   }
 
   this.node.style.top = btm + "px";
@@ -365,12 +366,13 @@ function gameOver() {
   clearInterval(timer3);
   clearInterval(timer4);
   clearInterval(timer5);
-  //
-  setInterval(function () {
-    // oPlayBox.innerHTML = "";
+
+  //setTimeout和setInterval 用法不一样，使用setInterval之后会不断调用游戏结束后重新开始会不断卡页面，修改为setTimeout则问题解除
+  setTimeout(function () {
     welcomePage.style.display = "block";
-    myPlane = null;
-    oPlayBox.style.backgroundImage = "url('images/开始背景.png')";
+    oPlayBox.style.display = "none";
+    oPlayBox.innerHTML = "";
+    scoreDiv.style.display = "none";
     score = 0;
     scoreValue.innerHTML = "0";
   }, 1000);
