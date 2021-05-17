@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 1200px;
+        height: 600px;
+        position: relative;
+      }
+      div img {
+        width: 1200px;
+        height: 600px;
+      }
+      div div {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      /* 中间的拉拽图标 */
+      p {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 4px solid #999;
+        position: absolute;
+        left: 571px;
+        top: 50%;
+        margin-top: -21px;
+        cursor: pointer;
+      }
+      #box {
+        width: 600px;
+        overflow: hidden;
+      }
+      #left {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        color: #fff;
+      }
+      #right {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1">
+      <div>
+        <img src="img-original.jpg" alt="" />
+      </div>
+      <div id="box">
+        <img src="img-modified.jpg" alt="" />
+      </div>
+      <p></p>
+      <span id="left">left</span>
+      <span id="right">right</span>
+    </div>
+  </body>
+</html>
+<script>
+  var oP = document.querySelector("p");
+  var oBox = document.querySelector("#box");
+  var oDiv = document.querySelector("#div1");
+  var oLeft = document.querySelector("#left");
+  var oRight = document.querySelector("#right");
+
+  oP.onmousedown = function () {
+    //原始值，鼠标点击事件到页面左边的距离
+    var downX = event.pageX;
+    //原始值，原型图标到图片左边的距离
+    var oldL = oP.offsetLeft;
+
+    document.onmousemove = function () {
+      //事件点击时鼠标事件到页面左边的距离-原始值未点击的左边距离=鼠标移动产生的距离
+      var disX = event.pageX - downX;
+      //l= 鼠标移动的距离+原点到图片左边的距离
+      //0为图片的最左边边缘位置
+      var l = oldL + disX;
+      if (l <= 0) {
+        l = 0;
+      }
+
+      //使l为图片的最右边的位置为终点，不超出图片
+      if (l >= oDiv.offsetWidth - oP.offsetWidth) {
+        l = oDiv.offsetWidth - oP.offsetWidth;
+      }
+      if (l <= 50) {
+        oLeft.style.opacity = 0;
+      } else {
+        oLeft.style.opacity = 1;
+      }
+      console.log(l);
+      if (l >= 1100) {
+        oRight.style.opacity = 0;
+      } else {
+        oRight.style.opacity = 1;
+      }
+
+      oP.style.left = l + "px";
+      oBox.style.width = l + 29 + "px";
+    };
+
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+    event.preventDefault();
+  };
+</script>
