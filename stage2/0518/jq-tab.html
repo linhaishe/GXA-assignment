@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Document</title>
+    <style>
+      div {
+        height: 100px;
+        width: 100px;
+        background: pink;
+        display: none;
+      }
+
+      .btnColor {
+        color: pink;
+      }
+
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <button>btn 1</button>
+    <button>btn 2</button>
+    <button>btn 3</button>
+
+    <div class="show">box1</div>
+    <div>box2</div>
+    <div>box3</div>
+  </body>
+</html>
+<script>
+  var oBtn = $("button");
+  var oDiv = $("div");
+
+  oBtn.click(function () {
+    //按钮点击事件
+    oBtn.removeClass("btnColor");
+    $(this).addClass("btnColor");
+    // btn($(this).index()).addClass("btnColor");
+    //盒子显示事件
+    oDiv.removeClass("show");
+    console.log($(this).index());
+    oDiv.eq($(this).index()).addClass("show");
+    //oDiv.eq($(this).index()).addClass("show");
+  });
+</script>
