@@ -42,11 +42,9 @@
     //按钮点击事件
     oBtn.removeClass("btnColor");
     $(this).addClass("btnColor");
-    // btn($(this).index()).addClass("btnColor");
     //盒子显示事件
     oDiv.removeClass("show");
     console.log($(this).index());
     oDiv.eq($(this).index()).addClass("show");
-    //oDiv.eq($(this).index()).addClass("show");
   });
 </script>
