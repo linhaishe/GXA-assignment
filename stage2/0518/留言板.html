@@ -7,5 +7,30 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <input /><button>submit</button>
+    <ul>
+      <!-- <li>ddddd<a href="javascript;:">delete</a></li> -->
+    </ul>
+  </body>
 </html>
+<script>
+  var oBtn = $("button");
+  var oInp = $("input");
+  var oUl = $("ul");
+
+  oBtn.click(function () {
+    oUl.prepend(
+      "<li>" +
+        oInp.val() +
+        "   <a href=" +
+        "javascript:;" +
+        ">delete</a>" +
+        "</li>"
+    );
+    oInp.val("");
+  });
+  oUl.on("click", "a", function () {
+    $(this).parent().remove();
+  });
+</script>
