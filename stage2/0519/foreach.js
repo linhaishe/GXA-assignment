@@ -7,7 +7,7 @@ function forEach(array, fn) {
 
 var arr = [1, 2, 3, 3, 4, 4, 5];
 
-forEach(arr, function (v, i) {
+var res = forEach(arr, function (v, i) {
   console.log(v, i);
 });
 
@@ -24,3 +24,5 @@ forEach(arr, function (v, i) {
 //   return i < 3;
 // });
 // console.log(arr2);
+
+console.log(res);
