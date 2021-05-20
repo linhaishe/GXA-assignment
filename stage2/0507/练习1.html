@@ -55,13 +55,14 @@
 <script>
   var oBox1 = document.querySelector("#box1");
   var oBox2 = document.querySelector("#box2");
+  var oLink = document.querySelector("span");
 
-  oBox2.addEventListener("mouseenter", function () {
+  oBox2.addEventListener("click", function () {
     oBox1.style.display = "block";
     oBox2.style.display = "none";
   });
 
-  oBox1.addEventListener("mouseleave", function () {
+  oLink.addEventListener("click", function () {
     oBox1.style.display = "none";
     oBox2.style.display = "block";
   });
