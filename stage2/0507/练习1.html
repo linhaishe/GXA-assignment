@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>练习1</title>
+    <style>
+      * {
+        margin: 0 auto;
+      }
+      #box1 {
+        width: 100%;
+        height: 30px;
+        background: green;
+        position: relative;
+        display: none;
+        text-align: center;
+      }
+
+      #box2 {
+        position: absolute;
+        /* float: right; */
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        /* border: 1px solid red; */
+        color: white;
+        background: green;
+        text-align: center;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+        /* border: 1px solid red; */
+      }
+      span {
+        width: 30px;
+        height: 30px;
+        /* border: 1px solid red; */
+        position: absolute;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <span><a href="javascript:;">x</a></span>
+    </div>
+    <div id="box2">⬇</div>
+  </body>
+</html>
+<script>
+  var oBox1 = document.querySelector("#box1");
+  var oBox2 = document.querySelector("#box2");
+
+  oBox2.addEventListener("mouseenter", function () {
+    oBox1.style.display = "block";
+    oBox2.style.display = "none";
+  });
+
+  oBox1.addEventListener("mouseleave", function () {
+    oBox1.style.display = "none";
+    oBox2.style.display = "block";
+  });
+</script>
