@@ -8,15 +8,69 @@
     <title>函数封装-click事件</title>
     <style>
       div {
-        width: 100px;
-        height: 100px;
+        width: 600px;
+        height: 600px;
         background: pink;
       }
     </style>
   </head>
   <p>on(oDiv,'click',show);on(oDiv,'click','p',show);</p>
   <body>
-    <div></div>
+    <div>
+      <p>1111111111</p>
+      <p>2222222222</p>
+      <p>3333333333</p>
+      <p>4444444444</p>
+    </div>
   </body>
 </html>
-<script src="函数封装.js"></script>
+<script>
+  // //原生重写
+  var oDiv = document.querySelector("div");
+  // //oDiv.addEventListener("click", show, false);
+  // oDiv.addEventListener(
+  //   "click",
+  //   function () {
+  //     if (event.target.tagName == "P") {
+  //       show2();
+  //       event.cancelBubble;
+  //     } else {
+  //       show();
+  //     }
+  //   },
+  //   false
+  // );
+
+  function show() {
+    alert(11111111);
+    console.log(11111111);
+  }
+
+  function show2() {
+    alert(222222);
+    console.log(222222);
+  }
+
+  //函数封装
+
+  function on(obj, arg1, arg2, arg3) {
+    //var event = event;
+    if (arg3) {
+      obj.addEventListener(
+        arg1,
+        function () {
+          if (event.target.tagName == arg2.toUpperCase()) {
+            arg3();
+            event.cancelBubble;
+          }
+        },
+        false
+      );
+    } else {
+      obj.addEventListener(arg1, arg2, false);
+    }
+  }
+
+  //on(oDiv, "click", "p", show2);
+  on(oDiv, "click", show);
+</script>
