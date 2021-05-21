@@ -2,7 +2,8 @@ var addBtn = document.querySelectorAll(".add");
 var clearAllBtn = document.querySelector("#allclear");
 var oLi = document.querySelectorAll("li");
 var textAreaDiv = document.querySelector("#textArea");
-
+//var aLink = document.querySelectorAll("a");
+var aLink = document.getElementsByTagName("a");
 //console.log(addBtn[1]);
 
 for (var i = 0; i < oLi.length; i++) {
@@ -31,23 +32,28 @@ for (var i = 0; i < oLi.length; i++) {
     //a 节点添加属性
     newALink.href = "javascript:;";
 
+    //创建事件监听,删除节点
+    newALink.addEventListener("click", function () {
+      textAreaDiv.removeChild(this.parentNode);
+    });
+
     //div内添加a节点
     newDiv.appendChild(newALink);
 
     //区域内添加文本
     textAreaDiv.appendChild(newDiv);
   };
-
-  //   var aLink = document.querySelectorAll("a");
-
-  //   for (var j = 0; j < aLink.length; j++) {
-  //     aLink[j].onclick = function () {
-  //       // var parentNode = this.parentNode;
-  //       console.log(11111);
-  //     };
-  //   }
 }
 
 clearAllBtn.onclick = function () {
   textAreaDiv.innerHTML = "";
 };
+
+//因为页面已经将JS加载完毕，此时新增请求动态添加节点，自然获取不到。
+//解决办法，直接在创建的时候添加事件监听事件即可
+// for (var j = 0; j < aLink.length; j++) {
+//   aLink[j].onclick = function () {
+//     // var parentNode = this.parentNode;
+//     console.log(11111);
+//   };
+// }
