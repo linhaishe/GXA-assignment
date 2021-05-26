@@ -1,0 +1,127 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+     * default document font size = 16px, 1rem = 16px, 100% = 16px
+     * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+    */
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.con {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 不知道这里是否为可用的公共样式 */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-family: 微软雅黑, 宋体;
+  font-weight: normal;
+  font-style: normal;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "iconfont";
+  src: url("iconfont.eot");
+  src: url("iconfont.eot?#iefix") format("embedded-opentype"),
+    url("iconfont.woff2") format("woff2"), url("iconfont.woff") format("woff"),
+    url("iconfont.ttf") format("truetype"),
+    url("iconfont.svg#iconfont") format("svg");
+}
+
+div {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  left: 25%;
+  overflow: hidden;
+}
+
+li {
+  list-style: none;
+  float: left;
+  /* border: 1px solid red; */
+}
+
+#imgs ul {
+  position: absolute;
+  width: 4000px;
+  height: 500px;
+  padding: 0;
+  left: 0px;
+
+  /* 如果使用felx方式则会导致ul框没有宽度，在移动时使用负值会没有值可以使用 ，ul的宽度必须给到所有图片的总长*/
+  /* display: flex; */
+}
+
+img {
+  width: 800px;
+  height: 500px;
+}
+
+#point {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  color: white;
+  left: 50%;
+  margin-left: -100px;
+  bottom: 10px;
+  /* border: 1px solid white; */
+  padding: 0;
+}
+
+#point li {
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-left: 10px;
+}
+
+.active {
+  background-color: white;
+}
