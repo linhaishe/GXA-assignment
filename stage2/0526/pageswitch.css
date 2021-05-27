@@ -74,6 +74,7 @@ div {
   height: 500px;
   left: 25%;
   overflow: hidden;
+  margin-top: 50px;
 }
 
 li {
@@ -82,13 +83,12 @@ li {
   /* border: 1px solid red; */
 }
 
-#imgs ul {
+#imgs {
   position: absolute;
   width: 4000px;
   height: 500px;
   padding: 0;
   left: 0px;
-
   /* 如果使用felx方式则会导致ul框没有宽度，在移动时使用负值会没有值可以使用 ，ul的宽度必须给到所有图片的总长*/
   /* display: flex; */
 }
@@ -124,4 +124,8 @@ img {
 
 .active {
   background-color: white;
+}
+
+.move {
+  transition: 0.3s all linear;
 }
