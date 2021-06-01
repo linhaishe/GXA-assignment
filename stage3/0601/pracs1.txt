@@ -24,3 +24,15 @@
 并且将查询出的每个人的年龄加10，并且不能重复 并且给每个字段起一个别名
 
 
+
+insert into student  values (1,"刘基","男",7,1), (2,"小张","女",18,2), (3,"小刘","男",18,3), (4,"小陈","女",20,2), (5,"小红","女",8,2), (6,"小黄","女",20,2), (7,"小六","女",8,2)
+
+insert into student
+values
+(8,"唐伯虎","男",20,3);
+
+select * from student where studentName like '%伯%';
+select * from student where age between 10 and 20;
+select age+5 as age from student where age between 10 and 20 limit 0,5;
+
+select age+10 as age2 from student where age<10 or age>20 limit 0,5;
