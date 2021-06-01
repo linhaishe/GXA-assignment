@@ -21,8 +21,7 @@
 年龄（yw_age）不能为空、
 电话（yw_tel）字符串型 不能为空、
 住址（yw_address）不能为空、
-薪水（yw_salary
-）浮点型
+薪水（yw_salary）浮点型
 
 
 自行每张表添加5条数据！
