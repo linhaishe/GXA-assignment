@@ -22,9 +22,14 @@ where staff = "张三";
 select * from salesRecord
 where staff = "张三" and soldDate between "2013-11-30" and "2013-12-31";
 
+select * from salesRecord
+where staff = "张三" and soldDate like '____-12-__';
+
 3.查询销售总金额大于2000 的12月份销售记录
 select * from salesRecord
 where salesSum >= 2000 and soldDate between "2013-11-30" and "2013-12-31";
+
+where staff = "张三" and soldDate like '____-12-__' and salesSum >= 2000;
 
 4.查询前10条销售记录
 select * from salesRecord limit 0,10;

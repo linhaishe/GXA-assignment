@@ -12,6 +12,9 @@ Kevin	17	女	xh1008	   45		T03
 1.统计每个班的学员的数量
 select class, count(1) as 班级数量 from pracs3 group by class;
 
+SELECT c_class,COUNT(*)
+FROM class2
+GROUP BY c_class
 2.统计每个班的总分
 select sum(score), class from pracs3 group by class;
 
@@ -30,11 +33,18 @@ select class,count(1) as 班级人数,sum(score) as 班级总分,avg(score) as �
 8.统计班级ID为T01的学员的数量,总分,平均分,最高分,最低分
 select class,count(1) as 班级人数,sum(score) as 班级总分,avg(score) as 班级平均分, max(score) as 班级最高分,min(score) as 班级最低分 from (select * from pracs3 where class="T01") as table2 group by class;
 
+SELECT COUNT(1),SUM(c_score),AVG(c_score),MAX(c_score),MIN(c_score)
+FROM class2
+WHERE c_class='T01';
+
 9.查询平均分上85的班级有哪些？
 select class,count(1) as 班级人数,sum(score) as 班级总分,avg(score) as 班级平均分, max(score) as 班级最高分,min(score) as 班级最低分 from pracs3 group by class having 班级平均分>85;
 
 10.查询有女生的班级是哪些？
-
+SELECT c_class
+FROM class2
+WHERE c_sex='女'
+GROUP BY c_class
 
 
 create table pracs3(

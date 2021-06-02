@@ -42,11 +42,19 @@ SELECT avg(s_price) FROM t_shop ;
 -- 6  查询所有包含瓜的商品的平均价格
 SELECT avg(s_price) FROM (SELECT * FROM t_shop WHERE s_name LIKE '%瓜%') as table2;
 
+SELECT AVG(s_price)
+FROM t_shop
+WHERE s_name LIKE '%瓜%'
+
 -- 7  查询最高商品的价格是最低商品的价格的倍数是多少
 SELECT max(s_price)/min(s_price) FROM t_shop;
   
 -- 8  查询商品名称中包含橙字的有多少个商品
 select s_name ,count(1)as数量 from (SELECT * FROM t_shop WHERE s_name LIKE '%橙%') as table2 group by s_name;
+
+SELECT COUNT(*)
+FROM t_shop
+WHERE s_name LIKE '%橙%'
 
 -- 9  修改 西瓜的价格为2块
 update t_shop set s_price= 2 WHERE s_name="西瓜";
@@ -56,10 +64,13 @@ DELETE
 FROM t_shop
 WHERE s_id=1 or s_id=4 or s_id=9;
 
+DELETE FROM t_shop WHERE s_id in(4,9,1);
+
 -- 11  查询蔬菜类别中最高的价格是多少？
 
 select max(s_price) from (SELECT * FROM t_shop WHERE s_class="蔬菜") as table2;
 
+select max(s_price) from t_shop where s_class="蔬菜";
 
 
 
