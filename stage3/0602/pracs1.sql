@@ -120,9 +120,13 @@ where ename="Smith");
 	from  emp
 	where  mgr=empno;
 
+SELECT ename 员工姓名,(SELECT ename FROM emp WHERE empno=e.mgr) 上级姓名 FROM emp e;
+
 
 -- 4．列出受雇日期早于其直接上级的所有员工。(同上,日期可直接拿来比较) 
 
+SELECT hiredate '受雇日期',(SELECT hiredate FROM emp  WHERE empno=e.mgr) '上级受雇日期',ename '员工名'
+FROM emp e WHERE hiredate-(SELECT hiredate FROM emp  WHERE empno=e.mgr)<0;
 
 -- 5．列出所有工作为“CLERK”（办事员）的姓名及其部门名称。(域，注意()) 
 

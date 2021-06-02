@@ -56,35 +56,181 @@ insert into scores(studentid,courseid,mark) values
 
 
 -- 请编写SQL语句，完成如下任务: 
---  1.查询课程"001"比课程"002"成绩高的所有学生的学号
-     
-  
+--  1.查询课程"1"比课程"2"成绩高的所有学生的学号
+
+SELECT tab1.studentid 
+FROM (SELECT studentid,courseid courseid1,mark mark1 FROM scores WHERE courseid=1) tab1 
+JOIN (SELECT studentid,courseid courseid2,mark mark2 FROM scores WHERE courseid=2) tab2
+ON tab1.studentid=tab2.studentid
+WHERE tab1.mark1>tab2.mark2;
+
 --  2.查询平均成绩大于60分的同学的学号和平均成绩
-
-
+select studentid,avg(mark)
+from scores
+group by studentid having avg(mark)>60;
 
 --  3.查询所有同学的学号、姓名、选课数、总成绩
 
+select students.StudentName,students.studentid,count(*) 选课数量,sum(mark)
+from students
+join scores on students.studentid = scores.studentid
+group by students.StudentName;
+
+-- join courses on courses.Courseid = scores.courseid;
 
 --  4.查询姓“王”的老师的个数
-
+select count(*)
+from teachers
+where teacherName like '王%';
 
 --  5.查询没学过"张三"老师课的同学的学号、姓名
+select distinct scores.studentid,students.StudentName
+from ((students
+join scores on scores.studentid = students.studentid)
+join courses on courses.Courseid = scores.courseid)
+where courses.TeacherID <> 1 ;
 
+select *
+from ((students
+join scores on scores.studentid = students.studentid)
+join courses on courses.Courseid = scores.courseid);
 
---  6.查询学过“001”并且也学过编号“002”课程的同学的学号、姓名；
+SELECT studentid,StudentName FROM students WHERE studentid 
+NOT IN(SELECT studentid FROM scores WHERE 
+courseid=(SELECT Courseid FROM courses WHERE TeacherID=(SELECT teacherid FROM teachers WHERE teacherName='张三')));
 
+-- 张三老师的id 
+SELECT teacherid FROM teachers WHERE teacherName='张三'
+-- 张三老师的课程
+SELECT Courseid FROM courses WHERE TeacherID = 张三老师的id
+-- 选择studentid 在score里 courseid 为张三的课
+SELECT studentid FROM scores WHERE 
+courseid=张三老师的课程id
+
+--  6.查询学过“1”并且也学过编号“2”课程的同学的学号、姓名；
+-- score 筛选分类 按照学生id分类 筛选课程有1和2
+-- 筛选出所有有课程1和2的信息
+select *
+from scores 
+where courseid =1 or courseid =2;
+
+select studentid,StudentName
+from students
+where studentid in (
+select studentid
+from scores 
+where courseid =1 or courseid =2
+);
 
 --  7.查询学过“张三”老师所教的所有课的同学的学号、姓名
-
+SELECT studentid,StudentName FROM students WHERE studentid 
+IN(SELECT studentid FROM scores WHERE 
+courseid=(SELECT Courseid FROM courses WHERE TeacherID=(SELECT teacherid FROM teachers WHERE teacherName='张三')));
 
 --  8.查询课程编号“002”的成绩比课程编号“001”课程低的所有同学的学号、姓名
 
---  9.查询所有课程的成绩小于60分的同学的学号、姓名
+
+SELECT tab1.studentid 
+FROM (SELECT studentid,courseid courseid1,mark mark1 FROM scores WHERE courseid=1) tab1 
+JOIN (SELECT studentid,courseid courseid2,mark mark2 FROM scores WHERE courseid=2) tab2
+ON tab1.studentid=tab2.studentid
+WHERE tab1.mark1<tab2.mark2;
+
+--  9.查询所有,课程的成绩小于60分的同学的学号、姓名
+select studentid,StudentName
+from students
+where studentid in (select distinct studentid 
+from scores
+where mark<60);
+
 
 -- 10.列出sql成绩大于等于 所有学生sql平均成绩的学生
+select studentid,StudentName
+from students
+where studentid in (select distinct studentid
+from scores
+where mark>=(select avg(mark)
+from scores
+where courseid = (select Courseid
+from courses
+where courseName = "sql")));
+
+
+-- 获得学生id
+select distinct studentid
+from scores
+where mark>=(select avg(mark)
+from scores
+where courseid = (select Courseid
+from courses
+where courseName = "sql"));
+
+
+-- 所有sql的平均分
+select avg(mark)
+from scores
+where courseid = (select Courseid
+from courses
+where courseName = "sql");
+-- 获得sql的id 
+select Courseid
+from courses
+where courseName = "sql";
+-- 学生sql的分数
+select mark,studentid
+from scores
+where courseid = (select Courseid
+from courses
+where courseName = "sql")
+group by studentid;
+
 
 -- 11.列出没有上过“就业课”的同学
--- 12.列出“王五”老师 所教授的课程有哪些？（列出课程名字，和老）师名字
+-- 获得就业科id
+select Courseid
+from courses
+where courseName = "就业课";
+
+-- 获得学生id
+select studentid
+from scores
+where courseid in (select Courseid
+from courses
+where courseName = "就业课");
+
+select studentid,StudentName
+from students
+where studentid in (
+select studentid
+from scores
+where courseid in (select Courseid
+from courses
+where courseName = "就业课")
+);
+
+-- 12.列出“王五”老师 所教授的课程有哪些？（列出课程名字，和老师名字）
+SELECT Courseid,courseName
+FROM courses
+RIGHT JOIN teachers
+ON courses.TeacherID = teachers.teacherid
+where courses.TeacherID = (select teachers.teacherid
+from teachers
+where teachers.teacherName = "王五");
+
 -- 13.列出被学生得到100分的课程有哪些？
+-- 获得100分的课程id
+select distinct courseid
+from scores
+where mark = 100;
+
+select courseName
+from courses
+where Courseid in (select distinct courseid
+from scores
+where mark = 100);
+
 -- 14.列出所有学生每门课程的考试成绩
+select students.StudentName,scores.mark,courses.courseName
+from ((scores
+join students on scores.studentid = students.studentid)
+join courses on courses.Courseid = scores.courseid);
