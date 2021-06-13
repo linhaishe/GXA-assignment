@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="oInp" />
+    <ul id="oUl"></ul>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  var oInp = document.getElementById("oInp");
+  var oUl = document.getElementById("oUl");
+
+  function show(data) {
+    console.log(data);
+    if (data.g) {
+      oUl.innerHTML = "";
+      data.g.forEach(function (v, i) {
+        var oLi = (c = document.createElement("li"));
+        oLi.innerHTML = v.q;
+        oUl.appendChild(oLi);
+      });
+    }
+  }
+
+  oInp.oninput = function () {
+    var str = oInp.value;
+    var oS = document.createElement("script");
+    oS.src =
+      "https://www.baidu.com/sugrec?ie=utf-8&prod=pc&from=pc_web&wd=" +
+      str +
+      "&cb=show";
+    document.documentElement.appendChild(oS);
+    document.documentElement.removeChild(oS);
+  };
+</script>

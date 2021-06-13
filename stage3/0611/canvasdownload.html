@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #000;
+        }
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="800" height="600">
+        您的浏览器版本过低 <a href="浏览器的地址">点击下载最新浏览器</a>
+    </canvas>
+    <button id="btn">点击</button>
+</body>
+</html>
+<script>
+    //获取了画布
+    var oC=document.querySelector('canvas');
+    var oBtn=document.querySelector('#btn');
+    //获取一支笔   官方：获取画布的上下文 
+    var gd=oC.getContext('2d');
+    //把笔移动到画画的位置上  这个点就是起始点
+    
+    oC.onmousedown=function(){
+        gd.moveTo(event.pageX,event.pageY);
+        gd.strokeStyle='blue';
+        oC.onmousemove=function(){
+            gd.lineTo(event.pageX,event.pageY);
+            gd.stroke();
+        }
+        oC.onmouseup=function(){
+            oC.onmousemove=null;
+            oC.onmouseup=null;
+        }
+    }
+
+    //保存图片
+    oBtn.onclick=function(){
+        var url=oC.toDataURL('image/png',0.4);
+        var oImg=new Image();
+        oImg.src=url;
+        oImg.onload=function(){
+            document.body.appendChild(oImg);
+        }
+        //console.log(url);
+    }
+    
+</script>

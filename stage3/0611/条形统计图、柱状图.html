@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #000;
+        }
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+</body>
+</html>
+<script>
+    function rnd(n,m){
+        return Math.floor(Math.random()*(m-n)+n)
+    }
+    var oC=document.querySelector('canvas');
+    var gd=oC.getContext('2d');
+    var W=oC.width; // 画布的宽高
+    var H=oC.height;
+    var arr=[100,300,700,200,400,600,1500];
+    var arrH=[];
+    var w=W/(arr.length*3)//柱子的宽度
+    //根据数据算每一根柱子有多高
+    //1算最大值
+    var maxH=-999999999999999999;
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]>maxH){
+            maxH=arr[i]
+        }
+    }
+    /*
+    高度是1000         700占1000的高度
+    100占多少高度
+    */
+    for(var i=0;i<arr.length;i++){
+        arrH.push(arr[i]*H/maxH)
+    }
+    for(var i=0;i<arrH.length;i++){
+        gd.fillStyle='rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+        /*
+        0  1
+        1  4
+        2  7
+        n  3n+1
+        */
+        gd.fillRect((3*i+1)*w,H-arrH[i],w,arrH[i]);
+    }
+</script>

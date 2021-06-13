@@ -221,7 +221,7 @@ where teachers.teacherName = "王五");
 -- 获得100分的课程id
 select distinct courseid
 from scores
-where mark = 100;
+where mark = 100;v
 
 select courseName
 from courses

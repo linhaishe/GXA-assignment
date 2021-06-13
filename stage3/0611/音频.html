@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <audio id="a1" src="image/千千阙歌.mp3" controls></audio>
+    <ul>
+        <li><a class="active" href="javascript:;">千千阙歌</a></li>
+        <li><a href="javascript:;">时间都去哪儿了</a></li>
+        <li><a href="javascript:;">小苹果</a></li>
+        <li><a href="javascript:;">夜的钢琴曲</a></li>
+        <li><a href="javascript:;">雨的印记</a></li>
+    </ul>
+    <button>开始</button>
+    <button>暂停</button>
+    <button>上一曲</button>
+    <button>下一曲</button>
+    <button>单曲循环</button>
+    <button>顺序播放</button>
+    <button>随机播放</button>
+    <button>循环播放</button>
+    <button>音量+</button>
+    <button>音量-</button>
+</body>
+</html>
+<script>
+    function rnd(n,m){
+        return Math.floor(Math.random()*(m-n)+n)
+    }
+    //var oA=new Audio();
+    var oA=document.getElementById('a1');
+    var aA=document.getElementsByTagName('a');
+    var aBtn=document.getElementsByTagName('button');
+
+    var songArr=['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+
+    var n=0; //默认第0首
+    var isPause=true;
+    var playStatus=1;  //1单曲循环 2顺序播放 3随机播放 4循环播放
+
+    function play(){
+        for(var i=0;i<aA.length;i++){
+            aA[i].className='';
+        }
+        aA[n].className='active';
+        if(isPause){
+            oA.src='image/'+songArr[n]+'.mp3';
+        }
+        oA.play();
+        isPause=false;
+    }
+    //开始
+    aBtn[0].onclick=play;
+    //暂停
+    aBtn[1].onclick=function(){
+        oA.pause();
+    }
+    //上一首
+    aBtn[2].onclick=function(){
+        n--;
+        if(n==-1){
+            n=songArr.length-1;
+        }
+        isPause=true;
+        play();
+    }
+    //下一首
+    aBtn[3].onclick=function(){
+        n++;
+        if(n==songArr.length){
+            n=0;
+        }
+        isPause=true;
+        play();
+    }
+
+    aBtn[4].onclick=function(){
+        playStatus=1;
+    }
+    aBtn[5].onclick=function(){
+        playStatus=2;
+    }
+    aBtn[6].onclick=function(){
+        playStatus=3;
+    }
+    aBtn[7].onclick=function(){
+        playStatus=4;
+    }
+    //当音乐播放完毕的时候
+    oA.onended=function(){
+        console.log(1,playStatus);
+        switch(playStatus){
+            case 1:
+                oA.play();
+                break;
+            case 2:
+                n++;
+                if(n<songArr.length){
+                    isPause=true;
+                    play()
+                }else{
+                    alert('歌单已经播放完毕')
+                }
+                break;
+            case 3:
+                n=rnd(0,songArr.length);
+                isPause=true;
+                play()
+                break;
+            case 4:
+                n++;
+                if(n==songArr.length){
+                    n=0
+                }
+                isPause=true;
+                    play()
+                break;
+        }
+    }
+
+    aBtn[8].onclick=function(){
+        console.log(oA.volume)
+        if(oA.volume<1){
+            oA.volume=(oA.volume*10+1)/10;
+        }
+        
+    }
+    aBtn[9].onclick=function(){
+        console.log(oA.volume)
+        if(oA.volume>0){
+            oA.volume=(oA.volume*10-1)/10;
+        }
+    }
+    
+</script>
