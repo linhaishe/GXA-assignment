@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script>
+  $.ajax({
+    url: "a.txt",
+  })
+    .then((res) => {
+      return $.ajax({
+        url: "a.txt",
+        data: { a: res },
+      });
+    })
+    .then((res) => {
+      return $.ajax({
+        url: "a.txt",
+        data: { a: res },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+</script> -->
+<script>
+  let p1 = $.ajax({
+    url: "a.txt",
+  });
+  let p2 = $.ajax({
+    url: "b.txt",
+  });
+  let p3 = $.ajax({
+    url: "c.txt",
+  });
+
+  Promise.all([p1, p2, p3]).then((res) => {
+    console.log(res);
+  });
+</script>
