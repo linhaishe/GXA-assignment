@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>
+<script>
+    class Drag{
+        constructor(obj){
+            this.obj=obj;
+            this.disX=0;
+            this.disY=0;
+            this.init();
+        }
+        init(){
+            this.obj.onmousedown=()=>{
+                this.fnDown();
+            }
+        }
+        fnDown(){
+            this.disX=event.pageX-this.obj.offsetLeft;
+            this.disY=event.pageY-this.obj.offsetTop;
+
+            document.onmousemove=()=>{
+                this.fnMove();
+            }
+            document.onmouseup=this.fnUp;
+            event.preventDefault();
+        }
+        fnMove(){
+            this.obj.style.left=event.pageX-this.disX+'px';
+            this.obj.style.top=event.pageY-this.disY+'px';
+        }
+        fnUp(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+
+    class LimitDrag extends Drag{
+        constructor(obj){
+            super(obj)
+        }
+        fnMove(){
+            let l=event.pageX-this.disX;
+            let t=event.pageY-this.disY;
+
+            if(l<0){
+                l=0
+            }else if(l>document.documentElement.clientWidth-this.obj.offsetWidth){
+                l=document.documentElement.clientWidth-this.obj.offsetWidth
+            }
+
+            if(t<0){
+                t=0
+            }else if(t>document.documentElement.clientHeight-this.obj.offsetHeight){
+                t=document.documentElement.clientHeight-this.obj.offsetHeight
+            }
+
+            this.obj.style.left=l+'px';
+            this.obj.style.top=t+'px';
+        }
+    }
+
+    new Drag(document.getElementById('div1'));
+
+    new LimitDrag(document.getElementById('div2'));
+</script>

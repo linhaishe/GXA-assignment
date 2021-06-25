@@ -73,6 +73,8 @@ p1.then(
   }
 );
 
+//链式调用
+
 // ajax({
 //     url:'a.txt',
 //     type:'get',

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+    Drag.prototype={
+        init:function(){
+            this.node.onmousedown=()=>{
+                this.fnDown();
+            }    
+        },
+        fnDown:function(){
+            this.disX=event.offsetX;
+            this.disY=event.offsetY;
+
+            document.onmousemove=()=>{
+                _this.fnMove();    
+            }
+            document.onmouseup=this.fnUp;
+        },
+        fnMove:function(){
+            var l=event.pageX-this.disX;
+            var t=event.pageY-this.disY;
+
+            this.node.style.left=l+'px';
+            this.node.style.top=t+'px';
+        },
+        fnUp:function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+    
+
+    function Drag(obj){
+        this.node=obj;
+        this.disX=0;
+        this.disY=0;
+
+        this.init();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var oDiv=document.querySelector('div');
+
+    new Drag(oDiv);
+</script>
