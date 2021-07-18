@@ -1,0 +1,42 @@
+@baseFont: 50px;
+@baseFontSize: 50;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/*In order to make that reset easier and more intuitive, you can use the inheriting snippet up at the top there, and the inheriting will be preserved.*/
+/*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+html {
+  box-sizing: border-box;
+
+  /* Set font size for easy rem calculations
+           * default document font size = 16px, 1rem = 16px, 100% = 16px
+           * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+          */
+  //   font-size: 50px;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: @baseFont;
+}
+
+.px2rem(@name, @px) {
+  @{name}: (@px / 2 / @baseFontSize*1rem);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
