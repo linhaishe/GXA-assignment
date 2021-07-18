@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="v1" src="1.mp4" controls></video>
+    <button>开始</button>
+    <button>音量-</button>
+    <button>全屏</button>
+    <button>快进</button>
+    <button>画中画</button>
+</body>
+</html>
+<script>
+    var oV=document.getElementById('v1');
+    var aBtn=document.getElementsByTagName('button');
+    var isStop=true
+
+    aBtn[0].onclick=function(){
+        if(isStop){
+            oV.play();
+            aBtn[0].innerText='暂停'
+        }else{
+            oV.pause();
+            aBtn[0].innerText='开始'
+        }
+        isStop=!isStop;
+    }
+    aBtn[1].onclick=function(){
+        oV.volume-=0.1;
+    }
+    aBtn[2].onclick=function(){
+        oV.requestFullscreen();
+    }
+    aBtn[3].onclick=function(){
+        console.log(oV.currentTime,oV.duration)
+        oV.currentTime++;
+    }
+    aBtn[4].onclick=function(){
+        oV.requestPictureInPicture()
+    }
+</script>
+
