@@ -40,3 +40,227 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+@media all and (min-width: 800px) {
+  .main {
+    flex: 3 0px;
+  }
+
+  .main {
+    order: 2;
+  }
+
+  .footer {
+    order: 4;
+  }
+}
+
+// div{
+//     .px2rem(width,100);
+//     .px2rem(height,100);
+//     background: red;
+// }
+
+//主页样式 homepage
+
+// 头部样式
+
+header {
+  // display: flex;
+  // align-items: center;
+  // justify-content: flex-start;
+  // align-content: center;
+  .px2rem(height,130);
+  .px2rem(padding,15);
+  #logo {
+    margin: 0 auto;
+  }
+
+  #logo img {
+    .px2rem(width, 242);
+    .px2rem(height, 74);
+  }
+
+  .btn-group,
+  .btn-check {
+    .px2rem(width, 186);
+    .px2rem(height, 58);
+    .px2rem(margin-left, 20);
+  }
+  .btn,
+  .btn-outline-secondary:hover,
+  .btn-outline-secondary:active {
+    // font-size: 10px;
+    border-radius: 0.5rem;
+    padding: 0;
+    background-color: #ccc;
+    border: 0;
+  }
+  #btnradio1 {
+    border-right: #fff 1px solid;
+  }
+  .btn-check:active + .btn-outline-secondary,
+  .btn-check:checked + .btn-outline-secondary,
+  .btn-outline-secondary.active,
+  .btn-outline-secondary.dropdown-toggle.show,
+  .btn-outline-secondary:active {
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+  }
+
+  label {
+    .px2rem(width, 43);
+    .px2rem(height, 29);
+    // svg {
+    //   vertical-align: middle;
+    //   display: flex;
+    //   /* justify-content: center; */
+    //   /* align-items: center; */
+    //   width: 40px;
+    //   height: 40px;
+    // }
+  }
+
+  // #forSeperate {
+  //   .px2rem(width, 5);
+  //   .px2rem(height, 29);
+  //   background-color: #fff;
+  // }
+}
+
+// 主内容样式
+
+main {
+  .px2rem(padding,15);
+  .input-group {
+    input {
+      .px2rem(width, 596);
+      .px2rem(height, 20);
+      border-radius: 0.5rem;
+      .px2rem(font-size, 20);
+      border-color: #f5333f;
+    }
+    span {
+      .px2rem(font-size, 30);
+      // .px2rem(width, 100);
+      .px2rem(height, 20);
+      border-radius: 0.5rem;
+      color: white;
+      background-color: #f5333f;
+      border-color: #f5333f;
+    }
+  }
+
+  .input-group {
+    position: relative;
+    .bi-search {
+      position: absolute;
+      z-index: 1;
+      .px2rem(left, 25);
+      .px2rem(top, 25);
+      // left: 10px;
+      // top: 10px;
+    }
+    input {
+      z-index: -1;
+      padding-left: 30px;
+      border-top-left-radius: 0.5rem !important;
+      border-bottom-left-radius: 0.5rem !important;
+    }
+  }
+
+  #cataContainer {
+    .px2rem(font-size, 20);
+    img {
+      .px2rem(width, 86);
+      .px2rem(height, 57);
+    }
+    .cataBox {
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      align-items: center;
+    }
+
+    #containbox1,
+    #containbox2 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .adPic1 {
+    .px2rem(width, 620);
+    .px2rem(height, 199);
+  }
+
+  .adpic2 {
+    .px2rem(width, 620);
+    .px2rem(height, 86);
+  }
+  .cataName {
+    .px2rem(font-size, 20);
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .pubuliu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .px2rem(margin-top, 30);
+
+    img {
+      .px2rem(width, 250);
+    }
+  }
+}
+
+// 底部样式
+footer {
+  width: 100%;
+  .px2rem(height, 137);
+  // position: absolute;
+  // bottom: 0;
+  border-top: 1px solid gray;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  div {
+    // width: 100;
+    // height: 86;
+    .px2rem(width,100);
+    .px2rem(height,86);
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    // font-size: 1rem;
+    // align-content: center;
+    .px2rem(font-size, 20);
+  }
+
+  img {
+    .px2rem(width,44);
+    .px2rem(height,44);
+    .px2rem(margin-bottom,15);
+  }
+}
