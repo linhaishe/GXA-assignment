@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no, viewport-fit=cover"
+    />
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 20px;
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      #box {
+        width: 10rem;
+        height: 10rem;
+        background: red;
+        margin: 2rem auto;
+      }
+    </style>
+    <script>
+      function change() {
+        document.documentElement.style.fontSize =
+          (document.documentElement.clientWidth * 20) / 320 + "px";
+      }
+      change();
+      window.onresize = change;
+    </script>
+  </head>
+  <body>
+    <div id="box"></div>
+  </body>
+</html>
+<script>
+  let oBox = document.querySelector("#box");
+  let tX = 0;
+  let tY = 0;
+
+  function getT(event) {
+    let x2 = event.targetTouches[1].pageX;
+    let y2 = event.targetTouches[1].pageY;
+
+    let x1 = event.targetTouches[0].pageX;
+    let y1 = event.targetTouches[0].pageY;
+
+    let x = (x1 + x2) / 2;
+    var y = (y1 + y2) / 2;
+
+    return { x, y };
+  }
+
+  oBox.addEventListener("touchstart", function () {
+    //求出了按下时候的坐标
+    let oldX = tX;
+    let oldY = tY;
+    let downX = getT(event).x;
+    let downY = getT(event).y;
+
+    function fnMove() {
+      let moveX = getT(event).x;
+      let moveY = getT(event).y;
+
+      tX = moveX - downX + oldX;
+      tY = moveY - downY + oldY;
+      oBox.style.transform = "translate(" + tX + "px," + tY + "px)";
+    }
+
+    function fnEnd() {
+      document.removeEventListener("touchmove", fnMove, false);
+      document.removeEventListener("touchend", fnEnd, false);
+    }
+
+    document.addEventListener("touchmove", fnMove, false);
+    document.addEventListener("touchend", fnEnd, false);
+    event.preventDefault();
+  });
+</script>
