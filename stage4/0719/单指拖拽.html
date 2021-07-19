@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 设置根字体大小 */
+      html {
+        font-size: 20px;
+        width: 100%;
+        height: 100%;
+      }
+
+      div {
+        height: 2rem;
+        width: 2rem;
+        background: pink;
+      }
+    </style>
+    <script>
+      //设置html的根字体根据窗口的大小进行重置
+      function change() {
+        document.documentElement.style.fontSize =
+          (document.documentElement.clientWidth * 20) / 320 + "px";
+      }
+      change();
+      window.onresize = change;
+    </script>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  // function setFont() {
+  //   //使html中的fontsize根据客户端的尺寸变换而改变
+  //   document.documentElement.style.fontSize =
+  //     (document.documentElement.clientWidth * 20) / 375 + "px";
+  // }
+  // setFont();
+  // window.onresize = setFont;
+
+  let oDiv = document.querySelector("div");
+
+  //获得物体到body左边的距离
+  //获得物体到body上边的距离
+
+  let x = oDiv.offsetLeft;
+  let y = oDiv.offsetTop;
+
+  oDiv.addEventListener(
+    "touchstart",
+    function () {
+      //获取手机端点击事件的事件对象
+      // console.log("手指点击后数据", event);
+      //处理物体的offsettop and offsetleft 永远没有改变，用的是最原始的值
+      //let disX = event.targetTouches[0].pageX-oDiv.offsetWidth;
+      //let disY = event.targetTouches[0].pageY-oDiv.offsetHeight;
+
+      //过渡只会重绘，不会重排。物体的位置永远在最开始的地方，过渡是即使你看到物体移动了，但是他的位置获取的还是原始的位置
+      //所以物体的位置需要时时更新，将16，17行改为
+
+      //获取手指到物件框左边的距离
+      let disX = event.targetTouches[0].pageX - x;
+      let disY = event.targetTouches[0].pageY - y;
+
+      function fnMove() {
+        //  console.log("手指移动后数据", event);
+        x = event.targetTouches[0].pageX - disX;
+        y = event.targetTouches[0].pageY - disY;
+        oDiv.style.transform = `translate(${x}px,${y}px)`;
+      }
+
+      function fnEnd() {
+        document.removeEventListener("touchmove", fnMove, false);
+        document.removeEventListener("touchend", fnEnd, false);
+      }
+
+      document.addEventListener("touchmove", fnMove, false);
+      document.addEventListener("touchend", fnEnd, false);
+
+      //阻止物体在被拖动时，页面也被动拖动，阻止默认事件产生
+      event.preventDefault();
+    },
+    false
+  );
+</script>
