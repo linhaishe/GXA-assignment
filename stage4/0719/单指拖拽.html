@@ -55,7 +55,8 @@
     "touchstart",
     function () {
       //获取手机端点击事件的事件对象
-      // console.log("手指点击后数据", event);
+      console.log("手指点击后数据", event);
+
       //处理物体的offsettop and offsetleft 永远没有改变，用的是最原始的值
       //let disX = event.targetTouches[0].pageX-oDiv.offsetWidth;
       //let disY = event.targetTouches[0].pageY-oDiv.offsetHeight;
@@ -68,13 +69,13 @@
       let disY = event.targetTouches[0].pageY - y;
 
       function fnMove() {
-        //  console.log("手指移动后数据", event);
         x = event.targetTouches[0].pageX - disX;
         y = event.targetTouches[0].pageY - disY;
         oDiv.style.transform = `translate(${x}px,${y}px)`;
       }
 
       function fnEnd() {
+        //  console.log("结束事件", event);
         document.removeEventListener("touchmove", fnMove, false);
         document.removeEventListener("touchend", fnEnd, false);
       }

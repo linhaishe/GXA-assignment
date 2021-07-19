@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 20px;
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+      }
+      #div1 {
+        width: 2rem;
+        height: 2rem;
+        background: green;
+      }
+      #div2 {
+        width: 2rem;
+        height: 2rem;
+        background: green;
+        transform: translate(1rem, 6rem);
+      }
+    </style>
+    <script>
+      function change() {
+        document.documentElement.style.fontSize =
+          (document.documentElement.clientWidth * 20) / 375 + "px";
+      }
+      change();
+      window.onresize = change;
+    </script>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+  </body>
+</html>
+<script>
+  //拖拽函数封装
+
+  function drag(obj) {
+    //获取物体对于事件源x/y轴的位置，浏览器中默认的事件源为body
+    let x = obj.offsetLeft;
+    let y = obj.offsetTop;
+
+    obj.addEventListener(
+      "touchstart",
+      function () {
+        //计算得出手指点击位置距离物体左边和上边的距离
+        let disX = event.targetTouches[0].pageX - x;
+        let disY = event.targetTouches[0].pageY - y;
+
+        //每个手指事件的物体都有自己的标识符，即identifier，用于区分手指点击的物体
+        let id = event.targetTouches[0].identifier;
+
+        function fnMove() {
+          if (event.targetTouches[0].identifier == id) {
+            x = event.targetTouches[0].pageX - disX;
+            y = event.targetTouches[0].pageY - disY;
+            obj.style.transform = `translate(${x}px,${y}px)`;
+          }
+        }
+
+        function fnEnd() {
+          console.log("结束事件", event);
+          //touchend事件中targetTouches没有identifier，只有在changedTouches中有identifier，所以这里通过changedTouches进行判断
+          if (event.changedTouches[0].identifier == id) {
+            document.removeEventListener("touchmove", fnMove, false);
+            document.removeEventListener("touchend", fnEnd, false);
+          }
+        }
+
+        document.addEventListener("touchmove", fnMove, false);
+        document.addEventListener("touchend", fnEnd, false);
+        event.preventDefault();
+      },
+      false
+    );
+  }
+  //给每个类循环田间拖拽事件
+  let aDiv = document.querySelectorAll("div");
+  for (let i = 0; i < aDiv.length; i++) {
+    drag(aDiv[i]);
+  }
+</script>
