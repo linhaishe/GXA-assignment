@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "星巴克用星说",
+    "navigationBarTextStyle":"black"
+  },
+    "tabBar":{
+    "color":"#999",
+    "backgroundColor":"#eee",
+    "borderStyle":"white",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "iconPath":"./image/line16.png",
+        "selectedIconPath": "./image/line16.png"
+      },
+      {
+        "pagePath":"pages/index/index",
+        "iconPath":"./image/square.png",
+        "selectedIconPath": "./image/square.png"
+      },
+      {
+        "pagePath":"pages/index/index",
+        "iconPath":"./image/leftIcon.png",
+        "selectedIconPath": "./image/leftIcon.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

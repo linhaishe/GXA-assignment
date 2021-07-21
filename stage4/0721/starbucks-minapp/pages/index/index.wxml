@@ -1,0 +1,24 @@
+<!-- index.wxml -->
+<view class="container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+    <swiper-item class="swiper-image">
+      <image src="../../image/4.png"></image>
+    </swiper-item>
+    <swiper-item class="swiper-image">
+      <image src="../../image/banner.png"></image>
+    </swiper-item>
+  </swiper>
+  <view class="bannerTitle">
+    <text class="bannerTitle2" selectable="false" space="false" decode="false">星冰粽清甜上市</text>
+  </view>
+  <view class="cardListsContainer" hover-class="none" hover-stop-propagation="false">
+    <text class="notes" selectable="false" space="false" decode="false">咖啡+祝福 即刻表心意</text>
+    <view class="cardLists" hover-class="none" hover-stop-propagation="false">
+      <!-- 单个卡片样式 -->
+      <view class="card" hover-class="none" hover-stop-propagation="false" wx:for="{{cardUrlsandDes}}">
+        <image class="cardImg" src="{{item.url}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <view class="cardDes" hover-class="none" hover-stop-propagation="false">{{item.des}}</view>
+      </view>
+    </view>
+  </view>
+</view>
